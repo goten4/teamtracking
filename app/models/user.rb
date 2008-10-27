@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
 
-  has_and_belongs_to_many :roles
-  has_and_belongs_to_many :teams
+  has_many :permissions
+  has_many :roles, :through => :permissions
+  has_many :assignments
+  has_many :teams, :through => :assignments
   
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -48,6 +50,10 @@ class User < ActiveRecord::Base
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end
+
+  def has_role?(name)
+    self.roles.find_by_name(name) ? true : false
   end
 
   protected

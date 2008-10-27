@@ -10,6 +10,8 @@ class CreateUsers < ActiveRecord::Migration
       t.column :updated_at,                :datetime
       t.column :remember_token,            :string, :limit => 40
       t.column :remember_token_expires_at, :datetime
+      t.column :deleted_at,                :datetime
+      t.integer :updated_by
     end
     add_index :users, :login, :unique => true
   end

@@ -11,24 +11,33 @@
 
 ActiveRecord::Schema.define(:version => 20081009212900) do
 
-  create_table "roles", :force => true do |t|
-    t.string "title"
+  create_table "assignments", :force => true do |t|
+    t.integer  "team_id",    :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "role_id"
+  create_table "permissions", :force => true do |t|
+    t.integer  "role_id",    :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "teams_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "team_id"
   end
 
   create_table "users", :force => true do |t|
@@ -41,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20081009212900) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
+    t.datetime "deleted_at"
+    t.integer  "updated_by"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
