@@ -1,0 +1,5 @@
+<tr class="<%= cycle('odd', 'even') %>">
+<td><%=h user.login %></td>
+<td><%=h user.email %></td>
+<td>[ <%= link_to 'Modifier les rôles', user_roles_path(user) %> ]&nbsp;[ <%= link_to 'Modifier le profil', edit_user_path(user) %> ]&nbsp;[ <%= link_to "Supprimer l'utilisateur", user, :confirm => "Etes-vous sûr ?", :method => :delete %> ]</td>
+</tr>

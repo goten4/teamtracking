@@ -1,0 +1,7 @@
+<h3>Rôles de l'utilisateur "<%=h @user.login%>"</h3>
+
+<h4>Rôles assignés:</h4>
+<ul><%= render :partial => 'role', :collection => @user.roles %></ul>
+
+<h4>Rôles disponibles:</h4>
+<ul><%= render :partial => 'role', :collection => (@all_roles - @user.roles) %></ul>

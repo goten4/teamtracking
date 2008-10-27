@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+ <title>Suivi d'équipe</title>
+ <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection' %>
+ <%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
+ <%= stylesheet_link_tag 'application' %>
+ <!--[if IE]><%= stylesheet_link_tag 'blueprint/ie', :media => 'screen, projection' %><![endif]-->
+<%= yield :head %>
+</head>
+<body>
+	<div class="container">
+		<div id='container_hd'>
+		  <div id='hd'>
+			  <h1>
+          <a href="/"><img src="/images/logo.gif"/></a>
+          <span>Suivi d'équipe</span>
+        </h1>
+		    <h2>
+		    	<% if logged_in? %>
+					<%= current_user.login %>
+          &nbsp;/&nbsp;
+					<%= link_to 'Se déconnecter', logout_url %>
+				<% else %>
+					Bienvenue ! 
+					<%= link_to 'Se connecter', new_session_path %> 
+				<% end %>
+		    </h2>
+		  </div>
+		</div>
+		<div id='container_bd'>
+		  <div id='main'>
+			  <div id="flashes">
+				<% names = [:notice, :error, :warning, :message, :success] %>
+				<% for name in names %>
+				  <% if flash[name] %>
+				    <%= "<div id=\"#{name}\" class=\"#{name}\">#{flash[name]}</div>" %>
+				  <% end %>
+				<% end %>
+			  </div>
+		    <%= yield :layout %>
+		  </div>
+		  <div id='sidebar'>
+		      <%= yield :sidebar %>
+		  </div>
+		</div>
+		<div id='container_ft'>
+		  <div id='ft'>
+		    <ul>
+				<li><%= link_to 'Accueil', root_url %></li>
+			    <% if logged_in? %>
+				    <li><%= link_to 'Profil', edit_user_path(current_user) %></li>
+				    <% if current_user.has_role?('administrator') %>
+				    	<li><%= link_to 'Gestion des utilisateurs', users_path %></li>
+			    	<% end %>
+					<li><%= link_to 'Se déconnecter', logout_url %></li>
+			    <% else %>
+				    <li><%= link_to 'Se connecter', new_session_path %></li>
+			    <% end %>
+		    </ul>
+		  </div>
+		</div>
+    </div>
+  </body>
+</html>

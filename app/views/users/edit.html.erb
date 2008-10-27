@@ -1,0 +1,45 @@
+<% if @user == current_user %>
+	<h3>Modifier votre profil</h3>
+<% else %>
+	<h3>Modifier le profil d'un utilisateur</h3>
+<% end %>
+
+<%= error_messages_for :user %>
+
+<% form_for :user, :url => user_url(@user), :html => { :method => :put, :class => 'MainForm' } do |f| %>
+	<%= hidden_field_tag :id, params[:id] %>
+	
+  <%= label_tag 'login', 'Login:'  %> <%=h @user.login %>
+	<%= label_tag 'email', 'Email:'  %>
+	<%= f.text_field :email, :size => 60 %>
+  <%= label_tag 'email', 'Inscrit le:'  %> <%= @user.created_at.to_s(:long) %>
+
+	<p><%= submit_tag 'Valider' %></p>
+<% end -%>
+
+<% content_for(:sidebar) do %>
+	<div class="box">
+		<h3>Aide</h3>
+<% if @user == current_user %>
+		<p>Vous pouvez modifier votre adresse email.</p>
+    <p>
+    Modifier votre mot de passe ?
+    <br/>
+    <%= link_to '» Cliquez ici pour modifier votre mot de passe', root_path %>
+    </p>
+<% else %>
+		<p>Vous pouvez modifier l'adresse email de l'utilisateur.</p>
+    <p>
+    Modifier le mot de passe ?
+    <br/>
+    <%= link_to '» Cliquez ici pour modifier le mot de passe de l\'utilisateur', root_path %>
+    </p>
+<% end %>
+	</div>
+<% end -%>
+
+<% content_for(:head) do %>
+	<script type='text/javascript'>
+	  document.getElementById('user_email').focus()
+	</script>
+<% end -%>

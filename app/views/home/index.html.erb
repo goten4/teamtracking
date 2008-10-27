@@ -1,0 +1,39 @@
+<h3>Bienvenue</h3>
+
+<p>This is an open source Rails example application.</p>
+
+<p>It provides a complete system for managing users, including sign up and verification of a new user's email address, login with role-based access control, and a system of resetting forgotten passwords, all using a RESTful architecture.</p>
+
+<p>You can easily customize the application for your own needs.</p>
+
+<p>You can obtain the source code here:</p>
+<ul>
+        <li><%= link_to 'http://github.com/fortuity/origin_restful_authentication/tree/master', "http://github.com/fortuity/origin_restful_authentication/tree/master" %></li>
+</ul>
+
+<p>You can see the original announcement:</p>
+<ul>
+        <li><%= link_to 'Rails RESTful Authentication Example Application', "http://originblog.wordpress.com/2008/08/13/rails-restful-authentication-example-application/" %></li>
+</ul>
+
+<p>and keep up with developments on the blog:</p>
+<ul>
+        <li><%= link_to 'Origin: Rails Example Applications', "http://originblog.wordpress.com/" %></li>
+</ul>
+
+<% content_for(:sidebar) do %>
+        <div class="box">
+                <h3>Aide</h3>
+                <p>
+                Connexion ?
+                <br/>
+                <%= link_to '» Cliquez ici pour vous connecter', new_session_path %>
+                </p>
+                <p>
+                Pas de compte ?
+                <br/>
+                <%= link_to '» Cliquez ici pour en demander un', root_path %>
+                </p>
+        </div>
+<% end -%>
+
