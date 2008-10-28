@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-  layout 'application'
   
   before_filter :check_administrator_role
   before_filter :find_user, :only => [:index, :update, :destroy]

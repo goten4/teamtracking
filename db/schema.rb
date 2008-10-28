@@ -9,12 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081009212900) do
+ActiveRecord::Schema.define(:version => 20081028161556) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "team_id",    :null => false
     t.integer  "user_id",    :null => false
     t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20081009212900) do
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
+    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
