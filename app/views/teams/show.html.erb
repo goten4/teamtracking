@@ -1,0 +1,13 @@
+<h3>Voir une équipe</h3>
+<p>
+	<%= label :name, 'Nom' %><br />
+	<%=h @team.name %>
+</p>
+<p>
+	<%= label :users, 'Liste des membres' %><br />
+	<% @team.users.each do |team| %>
+	<%=h team.name %><br/>
+	<% end %>
+</p>
+
+<%= render :partial => 'users/help_box' %>

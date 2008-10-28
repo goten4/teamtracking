@@ -1,0 +1,26 @@
+<% content_for(:sidebar) do %>
+<div class="box">
+	<h3>Aide</h3>
+	<p>
+		Liste des utilisateurs ?
+		<br/>
+		<%= link_to '» Cliquez ici pour voir les utilisateurs', users_path %>
+	</p>
+	<p>
+		Créer un utilisateur ?
+		<br/>
+		<%= link_to '» Cliquez ici pour créer un utilisateur', new_user_path %>
+	</p>
+	<hr/>
+	<p>
+		Liste des équipes ?
+		<br/>
+		<%= link_to '» Cliquez ici pour voir les équipes', :controller => 'teams', :action => 'list' %>
+	</p>
+	<p>
+		Créer une équipe ?
+		<br/>
+		<%= link_to '» Cliquez ici pour créer une équipe', new_team_path %>
+	</p>
+</div>
+<% end -%>

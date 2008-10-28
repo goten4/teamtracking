@@ -1,0 +1,15 @@
+<h3>Modifier une équipe</h3>
+
+<% form_for(@team) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, 'Nom' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Valider" %>
+  </p>
+<% end %>
+
+<%= render :partial => 'users/help_box' %>

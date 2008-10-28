@@ -8,9 +8,6 @@
 <p><strong>Email:</strong> <%=h @user.email %></p>
 <p><strong>Inscrit le:</strong> <%= @user.created_at.to_s(:long) %></p>
 
-<% content_for(:sidebar) do %>
-	<div class="box">
-		<h3>Aide</h3>
-		<p> This is your user profile. </p>
-	</div>
-<% end -%>
+<% if current_user.has_role?('administrator') %>
+	<%= render :partial => 'help_box' %>
+<% end %>

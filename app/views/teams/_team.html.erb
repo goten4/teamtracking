@@ -1,0 +1,8 @@
+<li>
+<%= team.name %>
+[<% if @user.has_team?(team.name) %>
+<%= link_to 'Supprimer de l\'équipe', user_team_url(:id => team.id, :user_id => @user.id), :method => :delete %>
+<% else %>
+<%= link_to 'Affecter à l\'équipe', user_team_url(:id => team.id, :user_id => @user.id), :method => :put %>
+<% end %>]
+</li>

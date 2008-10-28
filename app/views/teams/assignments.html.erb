@@ -1,0 +1,7 @@
+<h3>Équipes de l'utilisateur "<%=h @user.login%>"</h3>
+
+<h4>Équipes assignées:</h4>
+<ul><%= render :partial => 'team', :collection => @user.teams %></ul>
+
+<h4>Équipes disponibles:</h4>
+<ul><%= render :partial => 'team', :collection => (@all_teams - @user.teams) %></ul>

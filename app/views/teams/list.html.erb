@@ -1,0 +1,21 @@
+<h3>Liste des équipes</h3>
+
+<table>
+	<tr>
+		<th>Nom</th>
+		<th>Actions</th>
+	</tr>
+
+	<% for team in @teams %>
+	<tr>
+		<td><%=h team.name %></td>
+		<td>
+			[ <%= link_to 'Voir', team %> ]
+			[ <%= link_to 'Modifier', edit_team_path(team) %> ]
+			[ <%= link_to 'Supprimer', team, :confirm => 'Etes vous sûr ?', :action => 'delete' %> ]
+		</td>
+	</tr>
+	<% end %>
+</table>
+
+<%= render :partial => 'users/help_box' %>

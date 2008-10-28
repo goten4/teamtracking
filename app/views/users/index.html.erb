@@ -1,25 +1,11 @@
 <h3>Liste des utilisateurs</h3>
 <table>
-<tr>
-<th>Login</th>
-<th>Email</th>
-<th>Actions</th>
-</tr>
-<%= render :partial => 'user', :collection => @users %>
+	<tr>
+		<th>Login</th>
+		<th>Email</th>
+		<th>Actions</th>
+	</tr>
+	<%= render :partial => 'user', :collection => @users %>
 </table>
 
-<% content_for(:sidebar) do %>
-	<div class="box">
-		<h3>Aide</h3>
-    <p>
-    Créer un utilisateur ?
-    <br/>
-    <%= link_to '» Cliquez ici pour créer un utilisateur', new_user_path %>
-    </p>
-    <p>
-    Créer une équipe ?
-    <br/>
-    <%= link_to '» Cliquez ici pour créer une équipe', new_user_path %>
-    </p>
-	</div>
-<% end -%>
+<%= render :partial => 'help_box' %>

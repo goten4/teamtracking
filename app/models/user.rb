@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     self.roles.find_by_name(name) ? true : false
   end
 
+  def has_team?(name)
+    self.teams.find_by_name(name) ? true : false
+  end
+
   protected
     
 
