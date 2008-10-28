@@ -12,7 +12,7 @@
 		<td>
 			[ <%= link_to 'Voir', team %> ]
 			[ <%= link_to 'Modifier', edit_team_path(team) %> ]
-			[ <%= link_to 'Supprimer', team, :confirm => 'Etes vous sûr ?', :action => 'delete' %> ]
+			[ <%= link_to 'Supprimer', team, :confirm => 'Etes vous sûr ?', :method => 'delete' %> ]
 		</td>
 	</tr>
 	<% end %>

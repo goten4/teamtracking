@@ -2,12 +2,15 @@
 <p>
 	<%= label :name, 'Nom' %><br />
 	<%=h @team.name %>
+  [ <%= link_to 'Modifier', edit_team_path(@team) %> ]
 </p>
 <p>
 	<%= label :users, 'Liste des membres' %><br />
-	<% @team.users.each do |team| %>
-	<%=h team.name %><br/>
-	<% end %>
+  <% @team.users.each do |user| %>
+  <%=h user.login %>
+  [ <%= link_to 'Supprimer', user_team_url(:id => @team.id, :user_id => user.id), :method => :delete %> ]
+  <br/>
+  <% end %>
 </p>
 
 <%= render :partial => 'users/help_box' %>

@@ -4,6 +4,6 @@
 <ul><%= render :partial => 'team', :collection => @user.teams %></ul>
 
 <h4>Équipes disponibles:</h4>
-<ul><%= render :partial => 'team', :collection => (@all_teams - @user.teams) %></ul>
+<ul><%= render :partial => 'team', :collection => (@teams - @user.teams) %></ul>
 
 <%= render :partial => 'users/help_box' %>

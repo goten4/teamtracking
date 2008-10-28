@@ -5,27 +5,8 @@ class TeamsController < ApplicationController
   before_filter :find_user, :only => [:index, :update, :destroy]
 
   def index
-    @all_teams = Team.find(:all)
-  end
-
-  def update
-    @team = Team.find(params[:id])
-    unless @user.has_team?(@team.name)
-      @user.teams << @team
-    end
-    redirect_to user_teams_path(@user)
-  end
-
-  def destroy
-    @team = Team.find(params[:id])
-    if @user.has_team?(@team.name)
-      @user.teams.delete(@team)
-    end
-    redirect_to user_teams_path(@user)
-  end
-
-  def list
     @teams = Team.find(:all)
+    render :action => "list" unless @user
   end
 
   def show
@@ -51,27 +32,42 @@ class TeamsController < ApplicationController
     end
   end
 
-  def modify
+  def update
     @team = Team.find(params[:id])
 
-    if @team.update_attributes(params[:team])
-      flash[:notice] = 'L\'équipe a bien été modifiée'
-      redirect_to(@team)
+    if @user
+      unless @user.has_team?(@team.name)
+        @user.teams << @team
+      end
+      redirect_to :back
     else
-      render :action => "edit"
+      if @team.update_attributes(params[:team])
+        flash[:notice] = 'L\'équipe a bien été modifiée'
+        redirect_to(@team)
+      else
+        render :action => "edit"
+      end
     end
   end
 
-  def delete
+  def destroy
     @team = Team.find(params[:id])
-    @team.destroy
-    redirect_to(teams_url)
+
+    if @user
+      if @user.has_team?(@team.name)
+        @user.teams.delete(@team)
+      end
+    else
+      @team = Team.find(params[:id])
+      @team.destroy
+    end
+    redirect_to :back
   end
 
 protected
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:user_id]) if params[:user_id]
   end
 
 end
