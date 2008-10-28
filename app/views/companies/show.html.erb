@@ -1,0 +1,13 @@
+<p>
+  <b>Nom:</b>
+  <%=h @company.name %>
+  [ <%= link_to 'Modifier', edit_company_path(@company) %> ]
+</p>
+<p>
+	<%= label :users, 'Liste des membres' %><br />
+  <% @company.users.each do |user| %>
+  <%=h user.login %><br/>
+  <% end %>
+</p>
+
+<%= render :partial => 'users/help_box' %>
