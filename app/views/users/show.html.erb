@@ -5,8 +5,14 @@
 <% end %>
 
 <p><strong>Login:</strong> <%=h @user.login %></p>
+<p><strong>Nom:</strong> <%=h @user.name %></p>
 <p><strong>Email:</strong> <%=h @user.email %></p>
+<p><strong>Société:</strong> <%=h @user.company_name %></p>
 <p><strong>Inscrit le:</strong> <%= @user.created_at.to_s(:long) %></p>
+
+<p>
+	<%= link_to "Modifier", edit_user_path(@user) %>
+</p>
 
 <% if current_user.has_role?('administrator') %>
 	<%= render :partial => 'help_box' %>

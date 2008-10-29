@@ -1,5 +1,11 @@
 <tr class="<%= cycle('odd', 'even') %>">
 <td><%=h user.login %></td>
 <td><%=h user.email %></td>
-<td>[ <%= link_to 'Rôles', user_roles_path(user) %> ]&nbsp;[ <%= link_to 'Équipes', user_teams_path(user) %> ]&nbsp;[ <%= link_to 'Modifier', edit_user_path(user) %> ]&nbsp;[ <%= link_to "Supprimer", user, :confirm => "Etes-vous sûr ?", :method => :delete %> ]</td>
+<td>
+	[ <%= link_to 'Voir', user_path(user) %> ]
+	[ <%= link_to 'Modifier', edit_user_path(user) %> ]
+	[ <%= link_to 'Rôles', user_roles_path(user) %> ]
+	[ <%= link_to 'Équipes', user_teams_path(user) %> ]
+	[ <%= link_to "Supprimer", user, :confirm => "Etes-vous sûr ?", :method => :delete %> ]
+</td>
 </tr>

@@ -21,12 +21,14 @@
                 <p>
                 Pas de compte ?
                 <br/>
-                <%= link_to '» Cliquez ici pour en demander un', root_path %>
+                <%= mail_to "info@teamtracking.com", "» Cliquez ici pour en demander un",
+					:subject => "Demande de compte" %>
                 </p>
                 <p>
                 Mot de passe oublié ?
                 <br/>
-                <%= link_to '» Cliquez ici pour en demander un nouveau', root_path %>
+                <%= mail_to "info@teamtracking.com", "» Cliquez ici pour en demander un nouveau",
+					:subject => "Changement de mot de passe" %>
                 </p>
         </div>
 <% end -%>

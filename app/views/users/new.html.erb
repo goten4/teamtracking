@@ -5,34 +5,40 @@
 
 <% form_for :user, :url => users_path, :html => { :class => 'MainForm' } do |f| -%>
 
-	<%= label_tag 'login', 'Login' %>
-	<%= f.text_field :login %>
+<%= label_tag 'login', 'Login' %>
+<%= f.text_field :login %>
 
-	<%= label_tag 'email', "Email" %>
-	<%= f.text_field :email %>
+<%= label_tag 'name', 'Nom' %>
+<%= f.text_field :name %>
 
-	<%= label_tag 'password', 'Mot de passe:'  %>
-	<%= f.password_field :password %>
+<%= label_tag 'email', "Email" %>
+<%= f.text_field :email %>
 
-	<%= label_tag 'password_confirmation', 'Confirmez le mot de passe:' %>
-	<%= f.password_field :password_confirmation %>
+<%= label_tag 'password', 'Mot de passe:'  %>
+<%= f.password_field :password %>
 
-	<p><%= submit_tag 'Valider' %></p>
+<%= label_tag 'password_confirmation', 'Confirmez le mot de passe:' %>
+<%= f.password_field :password_confirmation %>
+
+<%= label_tag 'company', 'Société:' %>
+<%= f.collection_select(:company_id, Company.find(:all), :id, :name, {:prompt => true}) %>
+
+<p><%= submit_tag 'Valider' %></p>
 <% end -%>
 
 
 <% content_for(:sidebar) do %>
-	<div class="box">
-		<h3>Aide</h3>
-	</div>
-	<div class="box alt">
-		<h3>Attention</h3>
-		<p>Après avoir créer un utilisateur, n'oubliez pas de lui affecter lui un rôle et une équipe. </p>
-	</div>
+<div class="box">
+	<h3>Aide</h3>
+</div>
+<div class="box alt">
+	<h3>Attention</h3>
+	<p>Après avoir créer un utilisateur, n'oubliez pas de lui affecter lui un rôle et une équipe. </p>
+</div>
 <% end -%>
 
 <% content_for(:head) do %>
-	<script type='text/javascript'>
-	  document.getElementById('login').focus()
-	</script>
+<script type='text/javascript'>
+document.getElementById('login').focus()
+</script>
 <% end -%>

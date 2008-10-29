@@ -10,13 +10,19 @@ class CreatePermissions < ActiveRecord::Migration
     Role.create({
       :name => 'administrator'
     })
+    # Make sure the companies migration file was generated first
+    olm = Company.create({
+      :name => 'Orange Business Services online multimedia'
+    })
     # Add the default admin user
     # Be sure to change the password
     user = User.new({
       :login => 'admin',
+      :name => 'Administrateur',
       :email => 'admin@cvf.fr',
       :password => '4dm1n',
-      :password_confirmation => '4dm1n'
+      :password_confirmation => '4dm1n',
+      :company => olm
     })
     user.save(false)
 
