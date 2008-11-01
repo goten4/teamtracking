@@ -1,12 +1,38 @@
 <h3>Bienvenue</h3>
 
-<%= render :partial => 'calendar', :object => @date %>
+<ul id="tabs">
+	<li id="worked_days_tab" class="selected">
+		<%= link_to "Jours consommés", :action => "index" %>
+	</li>
+	<li id="forcasting_tab">
+		<%= link_to "Prévisions", :action => "index" %>
+	</li>
+	<li id="stats_tab">
+		<%= link_to "Statistiques", :action => "index" %>
+	</li>
+</ul>
+
+<% form_tag :action => "update" do -%>
+<p>
+	<%= render :partial => 'calendar', :object => @date %>
+</p>
+<p id="submit">
+	<%= submit_tag "Valider" %>
+</p>
+<% end -%>
 
 <% content_for(:sidebar) do %>
 <div class="box">
 	<h3>Aide</h3>
+	<p>
+		» Saisissez ici le temps que vous avez passé au sein de votre équipe.
+	</p>
+	<p>
+		» Pour chaque jour vous pouvez sélectionner le jour entier ou seulement le matin, ou l'après-midi.
+	</p>
 	<div class="alt">
-		Saisissez le temps que vous avez passé au sein de votre équipe.
+		<strong>Astuce :</strong><br/>
+		Utilisez la case du numéro de semaine pour cocher ou décocher la semaine complète.
 	</div>
 </div>
 <% end -%>

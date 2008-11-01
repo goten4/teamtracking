@@ -1,6 +1,14 @@
 require 'date'
 
 class Date#:nodoc:
+  def is_weekend?
+    self.wday == 6 || self.wday == 0
+  end
+
+  def is_weekday?
+    !self.is_weekend?
+  end
+  
   def week_number
     self.strftime("%W").to_i + 1
   end

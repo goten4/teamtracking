@@ -287,6 +287,11 @@ width: 550px;
 color: #777;
 }
 
+p#submit {
+	margin: 10px 10px 0 0;
+	text-align: right;
+}
+
 /* checkboxes */
 
 .MainForm fieldset {margin: 1em 0 0 0;}
@@ -335,7 +340,32 @@ color: #6b5e2b;
 }
 
 /* =============================================== */
-/*  10. CALENDAR 
+/*  10. TABS 
+/* =============================================== */
+
+ul#tabs {
+	border-bottom: 1px solid #ccc;
+	margin: 10px;
+	padding: 3px 0;
+}
+
+ul#tabs li {
+	background-color: #f1f1f1;
+	border-right: 1px solid #ccc;
+	display: inline;
+	padding: 5px 10px;
+}
+
+ul#tabs li a {
+	text-decoration: none;
+}
+
+ul#tabs li.selected {
+	background-color: #ccc;
+}
+
+/* =============================================== */
+/*  11. CALENDAR 
 /* =============================================== */
 
 table.calendar {

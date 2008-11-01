@@ -10,4 +10,9 @@ class HomeController < ApplicationController
     end
   end
 
+  def update
+    flash[:notice] = 'Votre saisie a bien été enregistrée'
+    @date = Date.today
+    render :action => :index
+  end
 end
