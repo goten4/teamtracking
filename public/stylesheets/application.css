@@ -333,3 +333,56 @@ border: 1px solid #fc0;
 background: #fff3c5;
 color: #6b5e2b;
 }
+
+/* =============================================== */
+/*  10. CALENDAR 
+/* =============================================== */
+
+table.calendar {
+	margin: 0 auto;
+	width: 650px;
+}
+
+table.calendar th,
+table.calendar td {
+	text-align: center;
+}
+
+table.calendar tr.week th {
+	background-color: #303030;
+	color: #fff;
+}
+
+table.calendar tbody tr.week th {
+	font-size: 150%;
+}
+
+table.calendar tr.week td {
+	padding: 5px;
+	text-align: center;
+	width: 75px;
+}
+
+table.calendar table {
+	border-bottom: 1px dashed #ccc;
+	border-right: 1px dashed #ccc;
+	margin: 0;
+}
+
+table.calendar table td {
+	font-size: 150%;
+	padding: 5px;
+}
+
+table.calendar table.weekend {
+	background-color: #eee;
+}
+
+table.calendar table.today {
+	background-color: #1e90ff;
+	color: #fff;
+}
+
+table.calendar table.other_month {
+	color: #ccc;
+}

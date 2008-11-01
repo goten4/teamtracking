@@ -48,7 +48,11 @@ class UsersController < ApplicationController
 
   # only for an administrator (same as purge, removes a user completely)
   def destroy
-    @user.destroy
+    if @user != current_user
+      @user.destroy
+    else
+      flash[:error]  = "Vous ne pouvez pas supprimer votre compte utilisateur"
+    end
     redirect_to users_path
   end
   
