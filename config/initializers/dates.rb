@@ -10,7 +10,7 @@ class Date#:nodoc:
   end
   
   def week_number
-    self.strftime("%W").to_i + 1
+    self.strftime("%W").to_i % 52 + 1
   end
   
   def week
