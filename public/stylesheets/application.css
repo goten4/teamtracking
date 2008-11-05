@@ -381,6 +381,12 @@ table.calendar td {
 table.calendar tr.week th {
 	background-color: #303030;
 	color: #fff;
+  line-height: 1em;
+}
+
+table.calendar a.select_links {
+	color: #fff;
+	font-size: 50%;
 }
 
 table.calendar tbody tr.week th {
@@ -394,6 +400,7 @@ table.calendar tr.week td {
 }
 
 table.calendar table {
+	background-color: #f1f1f1;
 	border-bottom: 1px dashed #ccc;
 	border-right: 1px dashed #ccc;
 	margin: 0;
@@ -404,8 +411,17 @@ table.calendar table td {
 	padding: 5px;
 }
 
+table.calendar table span.day {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+table.calendar table span.day:hover {
+  text-decoration: none;
+}
+
 table.calendar table.weekend {
-	background-color: #eee;
+	background-color: #ddd;
 }
 
 table.calendar table.today {

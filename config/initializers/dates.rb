@@ -1,6 +1,6 @@
 require 'date'
 
-class Date#:nodoc:
+class Date
   def is_weekend?
     self.wday == 6 || self.wday == 0
   end
