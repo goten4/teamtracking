@@ -384,9 +384,15 @@ table.calendar tr.week th {
   line-height: 1em;
 }
 
-table.calendar a.select_links {
+table.calendar span.select_links {
 	color: #fff;
+  cursor: pointer;
 	font-size: 50%;
+  text-decoration: underline;
+}
+
+table.calendar span.select_links:hover {
+  text-decoration: none;
 }
 
 table.calendar tbody tr.week th {

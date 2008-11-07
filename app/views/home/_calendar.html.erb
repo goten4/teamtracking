@@ -6,12 +6,12 @@
 	<tbody>
 <% calendar.weeks_of_month.each do |week| -%>
 		<tr class="week">
-			<th><%= week.first.week_number %><br/><%= link_to "Cocher", { :action => :index }, { :class => 'select_links' } %> <%= link_to "Décocher", { :action => :index }, { :class => 'select_links' } %></th>
+			<th><%= week.first.week_number %><br/><span class="select_links" onclick="check_all(<%= ids_of_week(week) %>)">Cocher</span> <span class="select_links" onclick="uncheck_all(<%= ids_of_week(week) %>)">Décocher</span></th>
 <% week.each do |date| -%>
 <% if date.is_weekend? -%>
 			<td><table class="<%= calendar_classes_of(date, calendar.month) %>"><tr><td><%= date.day %></td></tr><tr><td>&nbsp;</td></tr></table></td>
 <% else -%>
-			<td><table class="<%= calendar_classes_of(date, calendar.month) %>"><tr><td colspan="2"><span class="day"><%= date.day %></span></td></tr><tr><td><input type="checkbox" name="am<%= date.to_s(:number) %>" id="am<%= date.to_s(:number) %>" title="matin" /></td><td><input type="checkbox" name="pm<%= date.to_s(:number) %>" id="pm<%= date.to_s(:number) %>" title="après midi" /></td></tr></table></td>
+			<td><table class="<%= calendar_classes_of(date, calendar.month) %>"><tr><td colspan="2"><span class="day" onclick="toggle_check_all(<%= ids_of_day(date) %>)"><%= date.day %></span></td></tr><tr><td><input type="checkbox" name="am<%= date.to_s(:number) %>" id="am<%= date.to_s(:number) %>" title="matin" /></td><td><input type="checkbox" name="pm<%= date.to_s(:number) %>" id="pm<%= date.to_s(:number) %>" title="après midi" /></td></tr></table></td>
 <% end -%>
 <% end -%>
 		</tr>
