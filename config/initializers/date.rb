@@ -18,13 +18,8 @@ class Date
   end
   
   def weeks_of_month
-    weeks = Array.new
-    next_month = (self + 1.month).month
-    current_day = self.at_beginning_of_month.at_beginning_of_week
-    while current_day.month != next_month
-      weeks << current_day.week
-      current_day += 7.days
-    end
-    weeks
+    from  = at_beginning_of_month.at_beginning_of_week
+    to    = at_end_of_month.at_end_of_week
+    weeks = (from..to).to_a.in_groups_of 7
   end
 end
