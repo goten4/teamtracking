@@ -9,12 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081009212900) do
+ActiveRecord::Schema.define(:version => 20081112193447) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "team_id",    :null => false
     t.integer  "user_id",    :null => false
     t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "attendances", :force => true do |t|
+    t.integer  "user_id"
+    t.date     "day"
+    t.boolean  "am"
+    t.boolean  "pm"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

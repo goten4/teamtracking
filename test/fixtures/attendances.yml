@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  day: 2008-11-12
+  am: false
+  pm: false
+  type: MyString
+
+two:
+  user_id: 1
+  day: 2008-11-12
+  am: false
+  pm: false
+  type: MyString
