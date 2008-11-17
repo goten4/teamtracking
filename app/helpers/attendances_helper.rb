@@ -26,7 +26,7 @@ module AttendancesHelper
     result + ")"
   end
   
-  def selected_if(controller_name)
-    "selected" if controller.controller_name == controller_name
+  def selected_if(controller_names)
+    "selected" if controller_names.include?(controller.controller_name)
   end
 end

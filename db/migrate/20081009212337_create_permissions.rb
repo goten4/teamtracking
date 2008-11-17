@@ -28,7 +28,7 @@ class CreatePermissions < ActiveRecord::Migration
       :email => 'admin@cvf.fr',
       :password => '4dm1n',
       :password_confirmation => '4dm1n',
-      :company => olm
+      :company_id => olm
     })
     user.save(false)
 

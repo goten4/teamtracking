@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<title>Suivi d'équipe</title>
+	<title>Suivi d'équipe - <%= yield :title %></title>
 	<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection' %>
 	<%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
 	<%= stylesheet_link_tag 'application' %>
@@ -31,6 +31,8 @@
 	</div>
 	<div id='container_bd'>
 		<div id='main'>
+			<h3><%= yield :title %></h3>
+			<%= render :partial => 'home/tabs' %>
 			<div id="flashes">
 				<% names = [:notice, :error, :warning, :message, :success] -%>
 				<% for name in names -%>
@@ -51,9 +53,6 @@
 				<li><%= link_to 'Accueil', root_url %></li>
 				<% if logged_in? -%>
 				<li><%= link_to 'Profil', edit_user_path(current_user) %></li>
-				<% if current_user.has_role?('administrator') -%>
-				<li><%= link_to 'Gestion des utilisateurs', users_path %></li>
-				<% end -%>
 				<li><%= link_to 'Se déconnecter', logout_url %></li>
 				<% else -%>
 				<li><%= link_to 'Se connecter', new_session_path %></li>

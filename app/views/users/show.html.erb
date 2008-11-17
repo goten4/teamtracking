@@ -1,13 +1,23 @@
-<% if @user == current_user %>
-	<h3>Votre profil</h3>
-<% else %>
-	<h3>Profil de l'utilisateur</h3>
-<% end %>
+<% content_for(:title) do %>
+<% if @user == current_user -%>
+Votre profil
+<% else -%>
+Profil de l'utilisateur
+<% end -%>
+<% end -%>
 
 <p><strong>Login:</strong> <%=h @user.login %></p>
 <p><strong>Nom:</strong> <%=h @user.name %></p>
 <p><strong>Email:</strong> <%=h @user.email %></p>
 <p><strong>Société:</strong> <%=h @user.company_name %></p>
+<p>
+	<strong>Equipes:</strong>
+	<ul>
+	<% @user.teams.each do |team| -%>
+		<li><%=h team.name %></li>
+	<% end -%>
+	</ul>
+</p>
 <p><strong>Inscrit le:</strong> <%= @user.created_at.to_s(:long) %></p>
 
 <p>

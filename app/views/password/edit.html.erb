@@ -1,4 +1,4 @@
-<h3>Modifier votre mot de passe</h3>
+<% content_for(:title) do %>Modifier votre mot de passe<% end -%>
 
 <% @user.password = @user.password_confirmation = nil %>
 <%= error_messages_for :user %>

@@ -1,11 +1,27 @@
+<% if logged_in? -%>
+<% unless current_user.has_role?('stats_reader') && !current_user.has_at_least_one_team? %>
 <ul id="tabs">
-	<li class="<%= selected_if(EffectiveAttendancesController.controller_name) %>">
+	<% if current_user.has_role?('administrator') -%>
+	<li class="<%= selected_if([HomeController.controller_name]) %>">
+		<%= link_to "Accueil", :controller => "home", :action => "index" %>
+	</li>
+	<% end -%>
+	<li class="<%= selected_if([EffectiveAttendancesController.controller_name]) %>">
 		<%= link_to "Jours consommés", :controller => "effective_attendances", :action => "index" %>
 	</li>
-	<li class="<%= selected_if(ExpectedAttendancesController.controller_name) %>">
+	<li class="<%= selected_if([ExpectedAttendancesController.controller_name]) %>">
 		<%= link_to "Prévisions", :controller => "expected_attendances", :action => "index" %>
 	</li>
-	<li class="<%= selected_if(StatisticsController.controller_name) %>">
+	<% if current_user.has_stats_permissions? -%>
+	<li class="<%= selected_if([StatisticsController.controller_name]) %>">
 		<%= link_to "Statistiques", :controller => "statistics", :action => "index" %>
 	</li>
+	<% end -%>
+	<% if current_user.has_role?('administrator') -%>
+	<li class="<%= selected_if([UsersController.controller_name, TeamsController.controller_name, CompaniesController.controller_name, RolesController.controller_name]) %>">
+		<%= link_to "Administration", users_path %>
+	</li>
+	<% end -%>
 </ul>
+<% end -%>
+<% end -%>

@@ -1,12 +1,40 @@
-<h3>Bienvenue</h3>
+<% content_for(:title) do %>Statistiques de présence<% end %>
 
-<%= render :partial => 'home/tabs' %>
+<% form_tag :action => "index" do %>`
+<hr/>
+<p>
+	<%= label_tag :team, "Equipe : " %>
+	<%= select :team, :id, @team_list.collect {|t| [ t.name, t.id ] } %>
+</p>
+<p>
+	<%= radio_button_tag :type, :sprint, :selected => true %>
+	<%= label_tag :team, "Sprint : " %>
+	<%= select :team, :id, @team_list.collect {|t| [ t.name, t.id ] } %>
+</p>
+<p>
+	<%= radio_button_tag :type, :month %>
+	<%= label_tag :date, "Mois : " %>
+	<%= select_month Date.today.month %>
+	<%= select_year Date.today.year %>
+</p>
+<p>
+	<%= radio_button_tag :type, :period %>
+	<%= label_tag :date, "Période du : " %>
+	<%= text_field_tag :start_date %>&nbsp;&nbsp;
+	<%= label_tag :date, "au : " %>
+	<%= text_field_tag :end_date %>
+</p>
+<p>
+	<%= submit_tag "Valider" %>
+</p>
+<hr/>
+<% end -%>
 
 <% content_for(:sidebar) do %>
 <div class="box">
 	<h3>Aide</h3>
 	<ul>
-		<li>Consulter ici les jours consommés ainsi que les prévisions de présences de votre équipe.</li>
+		<li>Consulter ici les jours consommés ainsi que les prévisions de présences.</li>
 	</ul>
 </div>
 <% end -%>

@@ -1,7 +1,3 @@
-<h3>Bienvenue</h3>
-
-<%= render :partial => 'home/tabs' %>
-
 <% unless @user_list.blank? -%>
 	<% form_tag({ :action => "index" }, :class => "centered") do -%>
 	<%= hidden_field_tag :date, @date %>

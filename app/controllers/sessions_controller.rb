@@ -27,7 +27,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "Vous ête maintenant déconnecté"
     redirect_back_or_default('/')
   end
 

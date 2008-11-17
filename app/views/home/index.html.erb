@@ -1,0 +1,19 @@
+<% content_for(:title) do %>Bienvenue<% end %>
+
+<p>
+	Vous êtes administrateur, vous pouvez :
+	<ul>
+		<li><%= link_to "Gérer les présences effectives et prévisions", :controller => "effective_attendances", :action => "index" %></li>
+		<li><%= link_to "Gérer les prévisions de présence", :controller => "expected_attendances", :action => "index" %></li>
+		<li><%= link_to "Consulter les statistiques de présence", :controller => "statistics", :action => "index" %></li>
+		<li><%= link_to "Gérer les utilisateurs", users_path %></li>
+		<li><%= link_to "Gérer les sociétés", companies_path %></li>
+		<li><%= link_to "Gérer les équipes", teams_path %></li>
+	</ul>
+</p>
+
+<% content_for(:sidebar) do %>
+<div class="box">
+	<h3>Aide</h3>
+</div>
+<% end -%>

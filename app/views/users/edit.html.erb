@@ -1,8 +1,10 @@
-<% if @user == current_user %>
-<h3>Modifier votre profil</h3>
-<% else %>
-<h3>Modifier le profil d'un utilisateur</h3>
-<% end %>
+<% content_for(:title) do %>
+<% if @user == current_user -%>
+Modifier votre profil
+<% else -%>
+Modifier le profil d'un utilisateur
+<% end -%>
+<% end -%>
 
 <%= error_messages_for :user %>
 
@@ -14,12 +16,18 @@
 <%= f.text_field :name, :size => 60 %>
 <%= label_tag 'email', 'Email:'  %>
 <%= f.text_field :email, :size => 60 %>
-<% if current_user.has_role?('administrator') %>
+<% if current_user.has_role?('administrator') -%>
 <%= label_tag 'company', 'Société:' %>
 <%= f.collection_select(:company_id, Company.find(:all), :id, :name, {:prompt => true}) %>
-<% else %>
+<% else -%>
 <%= label_tag 'company', 'Société:'  %> <%=h @user.company_name %>
-<% end %>
+<% end -%>
+<%= label_tag 'teams', 'Equipes:'  %>
+<ul>
+<% @user.teams.each do |team| -%>
+	<li><%=h team.name %></li>
+<% end -%>
+</ul>
 <%= label_tag 'created_at', 'Inscrit le:'  %> <%= @user.created_at.to_s(:long) %>
 
 <p><%= submit_tag 'Valider' %></p>
@@ -28,21 +36,21 @@
 <% content_for(:sidebar) do %>
 <div class="box">
 	<h3>Aide</h3>
-	<% if @user == current_user %>
+	<% if @user == current_user -%>
 	<p>Vous pouvez modifier votre nom et votre adresse email.</p>
 	<p>
 		Modifier votre mot de passe ?
 		<br/>
 		<%= link_to '» Cliquez ici pour modifier votre mot de passe', :controller => 'password', :action => 'edit' %>
 	</p>
-	<% else %>
+	<% else -%>
 	<p>Vous pouvez modifier l'adresse email de l'utilisateur.</p>
 	<p>
 		Modifier le mot de passe ?
 		<br/>
 		<%= link_to '» Cliquez ici pour modifier le mot de passe de l\'utilisateur', root_path %>
 	</p>
-	<% end %>
+	<% end -%>
 </div>
 <% end -%>
 

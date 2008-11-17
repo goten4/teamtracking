@@ -1,5 +1,6 @@
 class AttendancesController < ApplicationController
   before_filter :login_required
+  before_filter :at_least_one_team_required
   before_filter :get_date
   before_filter :get_user_list
   before_filter :find_user_or_current_user
@@ -11,6 +12,13 @@ protected
     update_attendances
     flash[:notice] = 'Votre saisie a bien été enregistrée'
     render :action => "index"
+  end
+
+  def at_least_one_team_required
+    unless current_user.has_at_least_one_team?
+      logger.warn { "L'utilisateur #{current_user.login} n'a pas la permission de saisir sa présence" }
+      redirect_back_or_default(root_path)
+    end
   end
 
   def get_date

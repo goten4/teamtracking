@@ -1,4 +1,4 @@
-<h3>Rôles de l'utilisateur "<%=h @user.login%>"</h3>
+<% content_for(:title) do %>Rôles de l'utilisateur "<%=h @user.login%>"<% end -%>
 
 <h4>Rôles assignés:</h4>
 <ul><%= render :partial => 'role', :collection => @user.roles %></ul>

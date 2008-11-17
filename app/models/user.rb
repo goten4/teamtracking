@@ -74,4 +74,12 @@ class User < ActiveRecord::Base
   def has_team?(name)
     self.teams.find_by_name(name) ? true : false
   end
+
+  def has_stats_permissions?
+    ( self.has_role?('team_leader') && self.has_at_least_one_team? ) || self.has_role?('stats_reader') || self.has_role?('administrator')
+  end
+
+  def has_at_least_one_team?
+    self.teams.size > 0
+  end
 end
