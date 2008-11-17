@@ -438,3 +438,10 @@ table.calendar table.today {
 table.calendar table.other_month {
 	color: #ccc;
 }
+
+input.datepicker {
+	background-image: url(/images/calendar.gif);
+	background-position: center right;
+	background-repeat: no-repeat;
+	width: 15ex;
+}

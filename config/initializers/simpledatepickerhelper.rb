@@ -1,0 +1,1 @@
+$SIMPLE_DATEPICKER_OPTIONS = {:language => 'fr'}

@@ -10,3 +10,6 @@
 [submodule "vendor/plugins/rspec-rails"]
 	path = vendor/plugins/rspec-rails
 	url = git://github.com/dchelimsky/rspec-rails.git
+[submodule "vendor/plugins/simple_datepicker_helper"]
+	path = vendor/plugins/simple_datepicker_helper
+	url = git://github.com/rafaelp/simple_datepicker_helper.git
