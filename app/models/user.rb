@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :assignments
   has_many :teams, :through => :assignments
   belongs_to :company
+  has_many :attendances
   
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -46,6 +47,14 @@ class User < ActiveRecord::Base
     u && u.authenticated?(password) ? u : nil
   end
 
+  def self.find_all_by_teams_and_company(teams, company)
+    all :joins => :assignments, :conditions => ["company_id = ? AND team_id IN (?)", company, teams], :group => "users.id"
+  end
+  
+  def self.find_by_id_and_teams_and_company(id, teams, company)
+    find id, :joins => :assignments, :conditions => ["company_id = ? AND team_id IN (?)", company, teams]
+  end
+
   def login=(value)
     write_attribute :login, (value ? value.downcase : nil)
   end
@@ -65,5 +74,4 @@ class User < ActiveRecord::Base
   def has_team?(name)
     self.teams.find_by_name(name) ? true : false
   end
-
 end

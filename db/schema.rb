@@ -22,12 +22,14 @@ ActiveRecord::Schema.define(:version => 20081112193447) do
   create_table "attendances", :force => true do |t|
     t.integer  "user_id"
     t.date     "day"
-    t.boolean  "am"
-    t.boolean  "pm"
+    t.float    "am",         :default => 0.0
+    t.float    "pm",         :default => 0.0
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "attendances", ["user_id", "day", "type"], :name => "user_day_type_index", :unique => true
 
   create_table "companies", :force => true do |t|
     t.string   "name"

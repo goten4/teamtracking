@@ -1,0 +1,24 @@
+<h3>Bienvenue</h3>
+
+<%= render :partial => 'home/tabs' %>
+
+<% unless @user_list.blank? -%>
+	<% form_tag({ :action => "index" }, :class => "centered") do -%>
+	<%= hidden_field_tag :date, @date %>
+	Voir les informations de <%= select :user, :id, @user_list.collect {|u| [ u.name, u.id ] } %>
+	<%= submit_tag "OK" %>
+	<% end -%>
+<% end -%>
+
+<% form_tag :action => "update" do -%>
+<%= hidden_field_tag :date, @date %>
+<%= hidden_field_tag "user[id]", @user.id %>
+<p>
+	<%= render :partial => 'attendances/attendance_calendar', :object => @attendance_calendar %>
+</p>
+<p id="submit">
+	<%= submit_tag "Valider" %>
+</p>
+<% end -%>
+
+<%= render :partial => 'attendances/help_box' %>

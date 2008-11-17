@@ -1,0 +1,4 @@
+<tr class="week">
+	<th><%= attendance_week.first.day.week_number %><br/><span class="select_links" onclick="check_all(<%= ids_of_week(attendance_week) %>)">Cocher</span> <span class="select_links" onclick="uncheck_all(<%= ids_of_week(attendance_week) %>)">Décocher</span></th>
+	<%= render :partial => 'attendances/attendance_date', :collection => attendance_week %>
+</tr>

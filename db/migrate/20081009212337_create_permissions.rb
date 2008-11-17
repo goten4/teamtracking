@@ -10,6 +10,12 @@ class CreatePermissions < ActiveRecord::Migration
     Role.create({
       :name => 'administrator'
     })
+    Role.create({
+      :name => 'stats_reader'
+    })
+    Role.create({
+      :name => 'team_leader'
+    })
     # Make sure the companies migration file was generated first
     olm = Company.create({
       :name => 'Orange Business Services online multimedia'
@@ -37,6 +43,8 @@ class CreatePermissions < ActiveRecord::Migration
   def self.down
     drop_table :permissions
     Role.find_by_name('administrator').destroy
+    Role.find_by_name('stats_reader').destroy
+    Role.find_by_name('team_leader').destroy
     User.find_by_login('admin').destroy
   end
 end

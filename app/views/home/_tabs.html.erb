@@ -1,0 +1,11 @@
+<ul id="tabs">
+	<li class="<%= selected_if(EffectiveAttendancesController.controller_name) %>">
+		<%= link_to "Jours consommés", :controller => "effective_attendances", :action => "index" %>
+	</li>
+	<li class="<%= selected_if(ExpectedAttendancesController.controller_name) %>">
+		<%= link_to "Prévisions", :controller => "expected_attendances", :action => "index" %>
+	</li>
+	<li class="<%= selected_if(StatisticsController.controller_name) %>">
+		<%= link_to "Statistiques", :controller => "statistics", :action => "index" %>
+	</li>
+</ul>

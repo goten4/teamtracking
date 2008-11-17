@@ -1,0 +1,24 @@
+<% if attendance_date.day.is_weekend? -%>
+	<td>
+		<table class="<%= calendar_classes_of(attendance_date.day, @date.month) %>">
+			<tr>
+				<td><%= attendance_date.day.day %></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+	</td>
+<% else -%>
+	<td>
+		<table class="<%= calendar_classes_of(attendance_date.day, @date.month) %>">
+			<tr>
+				<td colspan="2"><span class="day" onclick="toggle_check_all(<%= ids_of_day(attendance_date.day) %>)"><%= attendance_date.day.day %></span></td>
+			</tr>
+			<tr>
+				<td><%= check_box_tag "attendance_ams[]", attendance_date.day, attendance_date.am.nonzero?, { :id => morning_id_of(attendance_date.day), :title => "matin" } %></td>
+				<td><%= check_box_tag "attendance_pms[]", attendance_date.day, attendance_date.pm.nonzero?, { :id => afternoon_id_of(attendance_date.day), :title => "après-midi" } %></td>
+			</tr>
+		</table>
+	</td>
+<% end -%>

@@ -381,18 +381,18 @@ table.calendar td {
 table.calendar tr.week th {
 	background-color: #303030;
 	color: #fff;
-  line-height: 1em;
+	line-height: 1em;
 }
 
 table.calendar span.select_links {
 	color: #fff;
-  cursor: pointer;
+	cursor: pointer;
 	font-size: 50%;
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 table.calendar span.select_links:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 table.calendar tbody tr.week th {
@@ -418,12 +418,12 @@ table.calendar table td {
 }
 
 table.calendar table span.day {
-  cursor: pointer;
-  text-decoration: underline;
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 table.calendar table span.day:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 table.calendar table.weekend {

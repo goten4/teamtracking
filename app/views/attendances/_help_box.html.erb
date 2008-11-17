@@ -1,26 +1,3 @@
-<h3>Bienvenue</h3>
-
-<ul id="tabs">
-	<li id="worked_days_tab" class="selected">
-		<%= link_to "Jours consommés", :action => "index" %>
-	</li>
-	<li id="forcasting_tab">
-		<%= link_to "Prévisions", :action => "index" %>
-	</li>
-	<li id="stats_tab">
-		<%= link_to "Statistiques", :action => "index" %>
-	</li>
-</ul>
-
-<% form_tag :action => "update" do -%>
-<p>
-	<%= render :partial => 'calendar', :object => @date %>
-</p>
-<p id="submit">
-	<%= submit_tag "Valider" %>
-</p>
-<% end -%>
-
 <% content_for(:sidebar) do %>
 <div class="box">
 	<h3>Aide</h3>
@@ -38,4 +15,3 @@
 	</div>
 </div>
 <% end -%>
-
