@@ -41,7 +41,6 @@ protected
   end
   
   def update_attendances
-    logger.debug { "====> attendance_calendar : #{@attendance_calendar.flatten.first.user_id}" }
     @attendance_calendar.flatten.each do |attendance|
       params[:attendance_ams].include?(attendance.day.to_s) ? attendance.am = 0.5 : attendance.am = 0
       params[:attendance_pms].include?(attendance.day.to_s) ? attendance.pm = 0.5 : attendance.pm = 0
