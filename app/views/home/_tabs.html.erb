@@ -18,7 +18,7 @@
 	</li>
 	<% end -%>
 	<% if current_user.has_role?('administrator') -%>
-	<li class="<%= selected_if([UsersController.controller_name, TeamsController.controller_name, CompaniesController.controller_name, RolesController.controller_name]) %>">
+	<li class="<%= selected_if([UsersController.controller_name, TeamsController.controller_name, SprintsController.controller_name, CompaniesController.controller_name, RolesController.controller_name]) %>">
 		<%= link_to "Administration", users_path %>
 	</li>
 	<% end -%>

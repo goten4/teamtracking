@@ -1,0 +1,27 @@
+<% content_for(:title) do %>Voir un sprint<% end -%>
+
+<p>
+  <b>Equipe:</b>
+  <%=h @sprint.team.name %>
+</p>
+
+<p>
+  <b>Nom:</b>
+  <%=h @sprint.name %>
+</p>
+
+<p>
+  <b>Début:</b>
+  <%=h @sprint.starts_at.to_s(:european) %>
+</p>
+
+<p>
+  <b>Fin:</b>
+  <%=h @sprint.ends_at.to_s(:european) %>
+</p>
+
+
+<%= link_to 'Modifier', edit_team_sprint_path(@team, @sprint) %> |
+<%= link_to 'Retour', team_sprints_path(@team) %>
+
+<%= render :partial => 'users/help_box' %>

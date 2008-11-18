@@ -27,8 +27,8 @@
 	<%= label_tag :end_date, "au : " %>
 	<%= text_field_tag :end_date, {}, { :class => 'datepicker' } %>
 </p>
-<%= simple_datepicker_for "start_date", {:keepFieldEmpty => true} %>
-<%= simple_datepicker_for "end_date", {:keepFieldEmpty => true} %>
+<%= simple_datepicker_for "start_date" %>
+<%= simple_datepicker_for "end_date" %>
 <p>
 	<%= submit_tag "Valider" %>
 </p>

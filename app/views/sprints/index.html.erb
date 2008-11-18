@@ -1,0 +1,27 @@
+<% content_for(:title) do %>Liste des sprints de l'équipe <%=h @team.name %><% end -%>
+
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Début</th>
+    <th>Fin</th>
+    <th>Actions</th>
+  </tr>
+
+<% for sprint in @sprints %>
+  <tr>
+    <td><%=h sprint.name %></td>
+    <td><%=h sprint.starts_at.to_s(:european) %></td>
+    <td><%=h sprint.ends_at.to_s(:european) %></td>
+    <td>
+		[ <%= link_to 'Voir', team_sprint_path(@team, sprint) %> ]
+    	[ <%= link_to 'Modifier', edit_team_sprint_path(@team, sprint) %> ]
+    	[ <%= link_to 'Supprimer', team_sprint_path(@team, sprint), :confirm => 'Êtes vous sûr ?', :method => :delete %> ]
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Nouveau sprint', new_team_sprint_path(@team) %>
+
+<%= render :partial => 'users/help_box' %>

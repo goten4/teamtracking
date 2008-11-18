@@ -1,0 +1,10 @@
+<% content_for(:title) do %>Modifier un sprint<% end -%>
+
+<% form_for(:team, @sprint, :url => team_sprint_path, :html => { :method => :put }) do |f| %>
+	<%= render :partial => 'sprint', :object => f %>
+<% end %>
+
+<%= link_to 'Voir', team_sprint_path(@team, @sprint) %> |
+<%= link_to 'Retour', team_sprints_path(@team) %>
+
+<%= render :partial => 'users/help_box' %>

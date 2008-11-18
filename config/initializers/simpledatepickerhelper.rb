@@ -1,1 +1,1 @@
-$SIMPLE_DATEPICKER_OPTIONS = {:language => 'fr'}
+$SIMPLE_DATEPICKER_OPTIONS = {:language => 'fr', :keepFieldEmpty => true}

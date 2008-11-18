@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   before_filter :check_administrator_role
 
   def index
-    @companies = Company.find(:all)
+    @companies = Company.find(:all, :order => :name)
   end
 
   def show

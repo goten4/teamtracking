@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  team_id: 1
+  name: MyString
+  starts_at: 2008-11-17
+  ends_at: 2008-11-17
+
+two:
+  team_id: 1
+  name: MyString
+  starts_at: 2008-11-17
+  ends_at: 2008-11-17

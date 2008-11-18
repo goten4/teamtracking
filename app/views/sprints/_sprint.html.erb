@@ -1,0 +1,19 @@
+  <%= sprint.error_messages %>
+  <%= sprint.hidden_field :team_id, :name => "sprint[team_id]" %>
+  <p>
+    <%= sprint.label :name, "Nom", :name => "sprint[name]" %><br />
+    <%= sprint.text_field :name, :name => "sprint[name]" %>
+  </p>
+  <p>
+    <%= sprint.label :starts_at, "Début", :name => "sprint[starts_at]" %><br/>
+    <%= sprint.text_field :starts_at_formatted, :name => "sprint[starts_at_formatted]", :class => 'datepicker' %>
+	<%= simple_datepicker_for "team_starts_at_formatted" %>
+  </p>
+  <p>
+    <%= sprint.label :ends_at, "Fin", :name => "sprint[ends_at]" %><br/>
+    <%= sprint.text_field :ends_at_formatted, :name => "sprint[ends_at_formatted]", :class => 'datepicker' %>
+	<%= simple_datepicker_for "team_ends_at_formatted" %>
+  </p>
+  <p>
+    <%= sprint.submit "Valider" %>
+  </p>

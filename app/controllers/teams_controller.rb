@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   before_filter :find_user, :only => [:index, :update, :destroy]
 
   def index
-    @teams = Team.find(:all)
+    @teams = Team.find(:all, :order => :name)
     render :action => "list" unless @user
   end
 
