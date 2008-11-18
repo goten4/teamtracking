@@ -15,7 +15,7 @@ protected
   end
 
   def at_least_one_team_required
-    unless current_user.has_at_least_one_team?
+    unless current_user.has_at_least_one_team? || current_user.has_role?('administrator')
       logger.warn { "L'utilisateur #{current_user.login} n'a pas la permission de saisir sa présence" }
       redirect_back_or_default(root_path)
     end
