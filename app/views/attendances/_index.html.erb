@@ -1,7 +1,8 @@
 <% unless @user_list.blank? -%>
 	<% form_tag({ :action => "index" }, :class => "centered") do -%>
 	<%= hidden_field_tag :date, @date %>
-	Voir les informations de <%= select :user, :id, @user_list.collect {|u| [ u.name, u.id ] } %>
+	<%= label_tag :user_id, "Voir les informations de : " %>
+	<%= select :user, :id, @user_list.collect {|u| [ u.name, u.id ] } %>
 	<%= submit_tag "OK" %>
 	<% end -%>
 <% end -%>

@@ -2,7 +2,7 @@ class AttendancesController < ApplicationController
   before_filter :login_required
   before_filter :at_least_one_team_required
   before_filter :get_date
-  before_filter :get_user_list
+  before_filter :find_user_list
   before_filter :find_user_or_current_user
   before_filter :find_attendance_calendar
   
@@ -25,7 +25,7 @@ protected
     @date = params[:date] ? params[:date].to_date : Date.today
   end
   
-  def get_user_list
+  def find_user_list
     if current_user.has_role?('administrator')
       @user_list = User.all
     elsif current_user.has_role?('team_leader')

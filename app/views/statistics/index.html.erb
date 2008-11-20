@@ -1,18 +1,19 @@
 <% content_for(:title) do %>Statistiques de présence<% end %>
 
-<% form_tag :action => "index" do %>`
+<% form_tag({ :action => "index" }, :class => "centered") do -%>
+	<%= label_tag :team_id, "Voir les statistiques de l'équipe : " %>
+	<%= select :team, :id, @team_list.collect {|t| [ t.name, t.id ] } %>
+	<%= submit_tag "OK" %>
+<% end -%>
+
+<% form_tag :action => "index" do %>
+<%= hidden_field_tag "team[id]", @team.id %>
 <hr/>
+<h4>Période :</h4>
 <p>
-	<%= label_tag :team, "Equipe" %><br/>
-	<%= select :team, :id, @team_list.collect {|t| [ t.name, t.id ] } %>
-</p>
-<p>
-	<%= label_tag :team, "Période" %>
-</p>
-<p>
-	<%= radio_button_tag :type, :sprint, :selected => true %>
-	<%= label_tag :team, "Sprint : " %>
-	<%= select :team, :id, @team_list.collect {|t| [ t.name, t.id ] } %>
+	<%= radio_button_tag :type, :sprint %>
+	<%= label_tag :sprint_id, "Sprint : " %>
+	<%= select :sprint, :id, @team.sprints.sort_by { |sprint| sprint.name }.collect {|t| [ t.name, t.id ] } %>
 </p>
 <p>
 	<%= radio_button_tag :type, :month %>
