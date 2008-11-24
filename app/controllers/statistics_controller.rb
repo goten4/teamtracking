@@ -2,7 +2,8 @@ class StatisticsController < ApplicationController
   before_filter :authorization_required
   before_filter :find_teams
   before_filter :find_team
-  before_filter :get_type
+  before_filter :find_sprint
+  before_filter :get_period_type
 
   def index
   end
@@ -27,7 +28,11 @@ protected
     @team = params[:team].blank? ? @team_list.first : Team.find(params[:team][:id])
   end
   
-  def get_type
-    @type = params[:type] || :sprint;
+  def find_sprint
+    @sprint = params[:sprint].blank? ? @team.sprints.first : Sprint.find(params[:sprint][:id])
+  end
+  
+  def get_period_type
+    @period_type = (params[:period_type] || "sprint").to_sym
   end
 end
