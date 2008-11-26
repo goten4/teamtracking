@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   def index
     if current_user.has_role?('administrator')
       render :action => "index"
-    elsif current_user.has_role?('stats_reader')
-      redirect_to :controller => "statistics", :action => "index"
+    elsif current_user.has_role?('reports_reader')
+      redirect_to :controller => "reports", :action => "index"
     elsif current_user.has_at_least_one_team?
       redirect_to :controller => "effective_attendances", :action => "index"
     else

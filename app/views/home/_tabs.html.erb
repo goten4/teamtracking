@@ -1,5 +1,5 @@
 <% if logged_in? -%>
-<% unless current_user.has_role?('stats_reader') && !current_user.has_at_least_one_team? %>
+<% unless current_user.has_role?('reports_reader') && !current_user.has_at_least_one_team? %>
 <ul id="tabs">
 	<% if current_user.has_role?('administrator') -%>
 	<li class="<%= selected_if([HomeController.controller_name]) %>">
@@ -12,9 +12,9 @@
 	<li class="<%= selected_if([ExpectedAttendancesController.controller_name]) %>">
 		<%= link_to "Prévisions", :controller => "expected_attendances", :action => "index" %>
 	</li>
-	<% if current_user.has_stats_permissions? -%>
-	<li class="<%= selected_if([StatisticsController.controller_name]) %>">
-		<%= link_to "Statistiques", :controller => "statistics", :action => "index" %>
+	<% if current_user.has_reports_permissions? -%>
+	<li class="<%= selected_if([ReportsController.controller_name]) %>">
+		<%= link_to "Rapports", :controller => "reports", :action => "index" %>
 	</li>
 	<% end -%>
 	<% if current_user.has_role?('administrator') -%>

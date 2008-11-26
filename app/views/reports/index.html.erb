@@ -1,0 +1,54 @@
+<% content_for(:title) do %>Rapports<% end %>
+
+<% if @team_list.size == 1 -%>
+<p class="centered">
+  <strong>Vous consultez les rapports de l'équipe <%= @team_list.first.name %></strong>
+</p>
+<% else -%>
+<% form_tag({ :action => "index" }, :class => "centered") do -%>
+	<%= label_tag :team_id, "Voir les rapports concernant l'équipe : " %>
+	<%= select :team, :id, @team_list.collect {|t| [ t.name, t.id ] } %>
+	<%= submit_tag "OK" %>
+<% end -%>
+<% end -%>
+
+<% form_tag :action => "index" do -%>
+<%= hidden_field_tag "team[id]", @team.id %>
+<hr/>
+<h4>Période :</h4>
+<% unless @team.sprints.empty? -%>
+<p>
+	<%= radio_button_tag :period_type, :sprint, (@period_type == :sprint) %>
+	<%= label_tag :sprint_id, "Sprint : " %>
+	<%= select :sprint, :id, @team.sprints.sort_by { |sprint| sprint.name }.collect {|t| [ t.name, t.id ] }, {}, { :onclick => "check('period_type_sprint')" } %>
+</p>
+<% end -%>
+<p>
+	<%= radio_button_tag :period_type, :month, (@period_type == :month) %>
+	<%= label_tag :date_month, "Mois : " %>
+	<%= select_month @start_date, {}, { :onclick => "check('period_type_month')" } %>
+	<%= select_year @start_date, {}, { :onclick => "check('period_type_month')" } %>
+</p>
+<p>
+	<%= radio_button_tag :period_type, :range, (@period_type == :range) %>
+	<%= label_tag :start_date, "Du : " %>
+	<%= text_field_tag :start_date, @start_date.to_s(:european), { :class => 'datepicker', :onclick => "check('period_type_range')" } %>&nbsp;&nbsp;
+	<%= label_tag :end_date, "au : " %>
+	<%= text_field_tag :end_date, @end_date.to_s(:european), { :class => 'datepicker', :onclick => "check('period_type_range')" } %>
+</p>
+<%= simple_datepicker_for "start_date" %>
+<%= simple_datepicker_for "end_date" %>
+<p>
+	<%= submit_tag "Valider" %>
+</p>
+<hr/>
+<% end -%>
+
+<% content_for(:sidebar) do %>
+<div class="box">
+	<h3>Aide</h3>
+	<ul>
+		<li>Consulter ici les rapports sur les jours consommés ainsi que les prévisions de présences.</li>
+	</ul>
+</div>
+<% end -%>

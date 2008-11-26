@@ -11,7 +11,7 @@ class CreatePermissions < ActiveRecord::Migration
       :name => 'administrator'
     })
     Role.create({
-      :name => 'stats_reader'
+      :name => 'reports_reader'
     })
     Role.create({
       :name => 'team_leader'
@@ -43,7 +43,7 @@ class CreatePermissions < ActiveRecord::Migration
   def self.down
     drop_table :permissions
     Role.find_by_name('administrator').destroy
-    Role.find_by_name('stats_reader').destroy
+    Role.find_by_name('reports_reader').destroy
     Role.find_by_name('team_leader').destroy
     User.find_by_login('admin').destroy
   end

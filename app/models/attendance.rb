@@ -10,4 +10,8 @@ class Attendance < ActiveRecord::Base
     end
     attendances_of_month.in_groups_of(7)
   end
+
+  def report(teams, companies, start_date, end_date)
+    
+  end
 end
