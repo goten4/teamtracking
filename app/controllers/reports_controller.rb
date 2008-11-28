@@ -48,8 +48,8 @@ protected
   def find_period_by_sprint
     unless @team.blank? || @period_type != :sprint
       @sprint = params[:sprint].blank? ? @team.sprints.last : Sprint.find(params[:sprint][:id])
-      @start_date = @sprint.starts_at
-      @end_date = @sprint.ends_at
+      @start_date = @sprint.starts_on
+      @end_date = @sprint.ends_on
     end
   end
 

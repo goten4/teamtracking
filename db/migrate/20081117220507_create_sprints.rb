@@ -3,8 +3,8 @@ class CreateSprints < ActiveRecord::Migration
     create_table :sprints do |t|
       t.integer :team_id
       t.string :name
-      t.date :starts_at
-      t.date :ends_at
+      t.date :starts_on
+      t.date :ends_on
 
       t.timestamps
     end

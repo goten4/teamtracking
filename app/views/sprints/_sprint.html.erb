@@ -4,12 +4,12 @@
 <%= sprint.label :name, "Nom", :name => "sprint[name]" %>
 <%= sprint.text_field :name, :name => "sprint[name]" %>
 
-<%= sprint.label :starts_at, "Début", :name => "sprint[starts_at]" %>
-<%= sprint.text_field :starts_at_formatted, :name => "sprint[starts_at_formatted]", :class => 'datepicker' %>
-<%= simple_datepicker_for "team_starts_at_formatted" %>
+<%= sprint.label :starts_on, "Début", :name => "sprint[starts_on]" %>
+<%= sprint.text_field :starts_on_formatted, :name => "sprint[starts_on_formatted]", :class => 'datepicker' %>
+<%= simple_datepicker_for "team_starts_on_formatted" %>
 
-<%= sprint.label :ends_at, "Fin", :name => "sprint[ends_at]" %>
-<%= sprint.text_field :ends_at_formatted, :name => "sprint[ends_at_formatted]", :class => 'datepicker' %>
-<%= simple_datepicker_for "team_ends_at_formatted" %>
+<%= sprint.label :ends_on, "Fin", :name => "sprint[ends_on]" %>
+<%= sprint.text_field :ends_on_formatted, :name => "sprint[ends_on_formatted]", :class => 'datepicker' %>
+<%= simple_datepicker_for "team_ends_on_formatted" %>
 
 <p><%= sprint.submit "Valider" %></p>

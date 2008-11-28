@@ -11,8 +11,8 @@
 <% for sprint in @sprints %>
   <tr>
     <td><%=h sprint.name %></td>
-    <td><%=h sprint.starts_at.to_s(:european) %></td>
-    <td><%=h sprint.ends_at.to_s(:european) %></td>
+    <td><%=h sprint.starts_on.to_s(:european) %></td>
+    <td><%=h sprint.ends_on.to_s(:european) %></td>
     <td>
 		  [ <%= link_to 'Voir', team_sprint_path(@team, sprint) %> ]
     	[ <%= link_to 'Modifier', edit_team_sprint_path(@team, sprint) %> ]

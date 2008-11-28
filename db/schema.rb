@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20081117220507) do
   create_table "sprints", :force => true do |t|
     t.integer  "team_id"
     t.string   "name"
-    t.date     "starts_at"
-    t.date     "ends_at"
+    t.date     "starts_on"
+    t.date     "ends_on"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
