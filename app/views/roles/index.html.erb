@@ -6,4 +6,5 @@
 <h4>Rôles disponibles:</h4>
 <ul><%= render :partial => 'role', :collection => (@all_roles - @user.roles) %></ul>
 
+<%= link_to "Retour", users_path %>
 <%= render :partial => 'users/help_box' %>

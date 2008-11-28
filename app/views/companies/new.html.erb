@@ -1,15 +1,12 @@
 <% content_for(:title) do %>Nouvelle société<% end -%>
 
-<% form_for(@company) do |f| %>
-  <%= f.error_messages %>
+<% form_for(@company, :html => { :class => 'MainForm' }) do |f| %>
+<%= f.error_messages %>
 
-  <p>
-    <%= f.label :name, 'Nom' %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.submit "Valider" %>
-  </p>
+<%= f.label :name, 'Nom' %>
+<%= f.text_field :name %>
+
+<p><%= f.submit "Valider" %></p>
 <% end %>
 
 <%= render :partial => 'users/help_box' %>

@@ -20,6 +20,16 @@ class CreatePermissions < ActiveRecord::Migration
     olm = Company.create({
       :name => 'Orange Business Services online multimedia'
     })
+    # Make sure the occupation migration file was generated first
+    olm_employee = Occupation.create({
+      :title => 'Interne'
+    })
+    # Make sure the job migration file was generated first
+    olm_job = Job.create({
+      :occupation_id => olm_employee,
+      :company_id => olm,
+      :rate => 0.0
+    })
     # Add the default admin user
     # Be sure to change the password
     user = User.new({
@@ -28,7 +38,7 @@ class CreatePermissions < ActiveRecord::Migration
       :email => 'admin@cvf.fr',
       :password => '4dm1n',
       :password_confirmation => '4dm1n',
-      :company_id => olm
+      :job_id => olm_job
     })
     user.save(false)
 

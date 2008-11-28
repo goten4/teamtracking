@@ -1,15 +1,12 @@
-<% content_for(:title) do %>Nouveau métier<% end -%>
+<% content_for(:title) do %>Nouveau poste<% end -%>
 
-<% form_for(@occupation) do |f| %>
-  <%= f.error_messages %>
+<% form_for(@occupation, :html => { :class => 'MainForm' }) do |f| %>
+<%= f.error_messages %>
 
-  <p>
-    <%= f.label :title, 'Titre' %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.submit "Valider" %>
-  </p>
+<%= f.label :title, 'Titre' %>
+<%= f.text_field :title %>
+
+<p><%= f.submit "Valider" %></p>
 <% end %>
 
 <%= link_to 'Retour', occupations_path %>

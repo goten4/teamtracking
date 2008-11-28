@@ -33,6 +33,11 @@ Modifier le profil d'un utilisateur
 <p><%= submit_tag 'Valider' %></p>
 <% end -%>
 
+<%= link_to 'Voir', user_path(@user) %>
+<% if current_user.has_role?('administrator') -%>
+| <%= link_to 'Retour', users_path %>
+<% end -%>
+
 <% content_for(:sidebar) do %>
 <div class="box">
 	<h3>Aide</h3>

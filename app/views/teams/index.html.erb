@@ -6,4 +6,5 @@
 <h4>Équipes disponibles:</h4>
 <ul><%= render :partial => 'team', :collection => (@teams - @user.teams) %></ul>
 
+<%= link_to "Retour", users_path %>
 <%= render :partial => 'users/help_box' %>

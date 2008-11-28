@@ -1,6 +1,6 @@
 <% content_for(:title) do %>Modifier un poste<% end -%>
 
-<% form_for(:company, @job, :url => company_job_path, :html => { :method => :put }) do |f| %>
+<% form_for(:company, @job, :url => company_job_path, :html => { :method => :put, :class => "MainForm" }) do |f| %>
 	<%= render :partial => 'job', :object => f %>
 <% end %>
 

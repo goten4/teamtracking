@@ -1,6 +1,6 @@
 <% content_for(:title) do %>Nouveau sprint<% end -%>
 
-<% form_for(:team, @sprint, :url => { :action => "create" }) do |f| %>
+<% form_for(:team, @sprint, :url => { :action => "create" }, :html => { :class => "MainForm" }) do |f| %>
 	<%= render :partial => 'sprint', :object => f %>
 <% end %>
 

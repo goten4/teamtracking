@@ -26,16 +26,8 @@
 <p><%= submit_tag 'Valider' %></p>
 <% end -%>
 
-
-<% content_for(:sidebar) do %>
-<div class="box">
-	<h3>Aide</h3>
-</div>
-<div class="box alt">
-	<h3>Attention</h3>
-	<p>Après avoir créer un utilisateur, n'oubliez pas de lui affecter lui un rôle et une équipe. </p>
-</div>
-<% end -%>
+<%= link_to 'Retour', users_path %>
+<%= render :partial => 'help_box' %>
 
 <% content_for(:head) do %>
 <script type='text/javascript'>

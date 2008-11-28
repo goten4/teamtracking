@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_all_by_teams_and_company(teams, company)
-    all :joins => [ :assignments, :jobs ], :conditions => ["company_id = ? AND team_id IN (?)", company, teams], :group => "users.id"
+    all :joins => [ :assignments, :job ], :conditions => ["company_id = ? AND team_id IN (?)", company, teams], :group => "users.id"
   end
   
   def self.find_by_id_and_teams_and_company(id, teams, company)

@@ -1,13 +1,10 @@
-  <%= job.error_messages %>
-  <%= job.hidden_field :company_id, :name => "job[company_id]" %>
-  <p>
-    <%= job.label :occupation_id, "Titre" %><br />
-    <%= job.collection_select(:occupation_id, Occupation.find(:all), :id, :title, {}, {:name => "job[occupation_id]"}) %>
-  </p>
-  <p>
-    <%= job.label :rate, "Tarif", :name => "job[rate]" %><br/>
-    <%= job.text_field :rate, :name => "job[rate]", :class => 'rate' %> &euro;
-  </p>
-  <p>
-    <%= job.submit "Valider" %>
-  </p>
+<%= job.error_messages %>
+<%= job.hidden_field :company_id, :name => "job[company_id]" %>
+
+<%= job.label :occupation_id, "Poste" %>
+<%= job.collection_select(:occupation_id, Occupation.find(:all), :id, :title, {}, {:name => "job[occupation_id]"}) %>
+
+<%= job.label :rate, "Tarif", :name => "job[rate]" %>
+<%= job.text_field :rate, :name => "job[rate]", :class => 'rate' %> &euro;
+
+<p><%= job.submit "Valider" %></p>

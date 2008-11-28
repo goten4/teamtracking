@@ -2,7 +2,6 @@
 <p>
 	<%= label :name, 'Nom' %><br />
 	<%=h @team.name %>
-  [ <%= link_to 'Modifier', edit_team_path(@team) %> ]
 </p>
 <p>
 	<%= label :users, 'Liste des membres' %><br />
@@ -13,5 +12,6 @@
   <% end %>
 </p>
 
+<%= link_to 'Modifier', edit_team_path(@team) %> |
 <%= link_to 'Retour', teams_path %>
 <%= render :partial => 'users/help_box' %>

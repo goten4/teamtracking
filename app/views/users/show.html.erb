@@ -9,7 +9,11 @@ Profil de l'utilisateur
 <p><strong>Login:</strong> <%=h @user.login %></p>
 <p><strong>Nom:</strong> <%=h @user.name %></p>
 <p><strong>Email:</strong> <%=h @user.email %></p>
-<p><strong>Société / Statut:</strong> <%=h @user.job.company_name_and_title %></p>
+<p><strong>Société:</strong> <%=h @user.job.company.name %></p>
+<p><strong>Statut:</strong> <%=h @user.job.occupation.title %></p>
+<% if current_user.has_role?('administrator') %>
+<p><strong>Tarif:</strong> <%=h @user.job.rate %> &euro;</p>
+<% end -%>
 <p>
 	<strong>Equipes:</strong>
 	<ul>
@@ -22,6 +26,9 @@ Profil de l'utilisateur
 
 <p>
 	<%= link_to "Modifier", edit_user_path(@user) %>
+<% if current_user.has_role?('administrator') %>
+	| <%= link_to "Retour", users_path %>
+<% end %>
 </p>
 
 <% if current_user.has_role?('administrator') %>

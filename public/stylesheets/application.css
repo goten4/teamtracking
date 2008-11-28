@@ -244,26 +244,26 @@ font-size: 123.1%;
 font-weight: bold;
 color: #777;
 width: 250px;
-background: #f8f8f8;
+background-color: #f8f8f8;
 }
 
 .MainForm input:focus, .MainForm textarea:focus{
 color: #777;
 border-color: #777;
-background: #fff;
+background-color: #fff;
 }
 
 .MainForm input.wrong, .MainForm .fieldWithErrors input {
 border-color: #f00;
 color: #f00;
-background: #ffd5d5;
+background-color: #ffd5d5;
 }
 
 /* submit */
 .MainForm p input, .MainForm p button {
 padding-left: 1em;
 padding-right: 1em;
-background: #008000;
+background-color: #008000;
 border: 4px solid #004500;
 color: #fff;
 margin: 1em 0;
@@ -272,7 +272,7 @@ cursor: pointer;
 }
 
 .MainForm p input:hover{
-background:#004500;} 
+background-color:#004500;} 
 
 .MainForm strong{color: #f00;}
 
@@ -345,7 +345,7 @@ color: #6b5e2b;
 
 ul#tabs {
 	border-bottom: 1px solid #ccc;
-	margin: 10px;
+	margin: 10px 0;
 	padding: 3px 0;
 }
 
@@ -370,7 +370,7 @@ ul#tabs li.selected {
 
 table.calendar {
 	margin: 0 auto;
-	width: 650px;
+	width: 670px;
 }
 
 table.calendar th,

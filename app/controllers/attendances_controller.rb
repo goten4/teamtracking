@@ -29,7 +29,7 @@ protected
     if current_user.has_role?('administrator')
       @user_list = User.all
     elsif current_user.has_role?('team_leader')
-      @user_list = User.find_all_by_teams_and_company current_user.teams, current_user.company
+      @user_list = User.find_all_by_teams_and_company current_user.teams, current_user.job.company
     end
   end
   

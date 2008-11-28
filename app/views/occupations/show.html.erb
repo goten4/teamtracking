@@ -1,9 +1,9 @@
-<% content_for(:title) do %>Voir une équipe<% end -%>
+<% content_for(:title) do %>Voir un poste<% end -%>
 <p>
   <%= label :title, 'Titre' %><br />
   <%=h @occupation.title %>
-  [ <%= link_to 'Modifier', edit_occupation_path(@occupation) %> ]
 </p>
 
+<%= link_to 'Modifier', edit_occupation_path(@occupation) %> |
 <%= link_to 'Retour', occupations_path %>
 <%= render :partial => 'users/help_box' %>

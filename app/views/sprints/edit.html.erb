@@ -1,6 +1,6 @@
 <% content_for(:title) do %>Modifier un sprint<% end -%>
 
-<% form_for(:team, @sprint, :url => team_sprint_path, :html => { :method => :put }) do |f| %>
+<% form_for(:team, @sprint, :url => team_sprint_path, :html => { :method => :put, :class => "MainForm" }) do |f| %>
 	<%= render :partial => 'sprint', :object => f %>
 <% end %>
 

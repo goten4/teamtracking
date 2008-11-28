@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Titre</th>
+    <th>Poste</th>
     <th>Tarif</th>
     <th>Actions</th>
   </tr>
@@ -20,6 +20,7 @@
 <% end %>
 </table>
 
-<%= link_to 'Nouveau poste', new_company_job_path(@company) %>
+<%= link_to 'Nouveau poste', new_company_job_path(@company) %> |
+<%= link_to 'Retour', companies_path %>
 
 <%= render :partial => 'users/help_box' %>
