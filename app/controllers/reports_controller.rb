@@ -6,13 +6,13 @@ class ReportsController < ApplicationController
   before_filter :find_period_by_sprint
   before_filter :find_period_by_month
   before_filter :find_period_by_range
+  before_filter :validates_dates
 
   def index
     if @team.blank?
       flash[:notice] = "Pas d'équipe, pas de rapport !"
       render :action => "noteam"
     elsif request.post?
-      
     end
   end
 
@@ -67,5 +67,12 @@ protected
       @start_date = ( params[:start_date].blank? ? Date.today.at_beginning_of_month : params[:start_date].to_utc(:european).to_date )
       @end_date = ( params[:end_date].blank? ? Date.today.at_end_of_month : params[:end_date].to_utc(:european).to_date )
     end    
+  end
+
+  def validates_dates
+    if @start_date > @end_date
+      flash[:error] = "Dates invalides"
+      render :action => :index
+    end
   end
 end
