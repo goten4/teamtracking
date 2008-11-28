@@ -1,0 +1,22 @@
+<% content_for(:title) do %>Voir un poste<% end -%>
+
+<p>
+  <b>Société:</b>
+  <%=h @job.company.name %>
+</p>
+
+<p>
+  <b>Titre:</b>
+  <%=h @job.occupation.title %>
+</p>
+
+<p>
+  <b>Tarif:</b>
+  <%=h @job.rate %> &euro;
+</p>
+
+
+<%= link_to 'Modifier', edit_company_job_path(@company, @job) %> |
+<%= link_to 'Retour', company_jobs_path(@company) %>
+
+<%= render :partial => 'users/help_box' %>

@@ -20,8 +20,8 @@
 <%= label_tag 'password_confirmation', 'Confirmez le mot de passe:' %>
 <%= f.password_field :password_confirmation %>
 
-<%= label_tag 'company', 'Société:' %>
-<%= f.collection_select(:company_id, Company.find(:all), :id, :name, {:prompt => true}) %>
+<%= label_tag 'company', 'Société / Statut:' %>
+<%= f.collection_select(:job_id, Job.find(:all), :id, :company_name_and_title, {:prompt => true}) %>
 
 <p><%= submit_tag 'Valider' %></p>
 <% end -%>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081117220507) do
+ActiveRecord::Schema.define(:version => 20081127231851) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "team_id",    :null => false
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(:version => 20081117220507) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.integer  "occupation_id"
+    t.integer  "company_id"
+    t.float    "rate",          :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "occupations", :force => true do |t|
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,7 +87,7 @@ ActiveRecord::Schema.define(:version => 20081117220507) do
     t.string   "email",                     :limit => 100
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
-    t.integer  "company_id"
+    t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40

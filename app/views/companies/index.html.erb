@@ -12,10 +12,12 @@
 		<td>
 			[ <%= link_to 'Voir', company %> ]
 			[ <%= link_to 'Modifier', edit_company_path(company) %> ]
+			[ <%= link_to 'Postes & Tarifs', company_jobs_path(company) %> ]
 			[ <%= link_to 'Supprimer', company, :confirm => 'Etes vous sûr ?', :method => 'delete' %> ]
 		</td>
   </tr>
   <% end %>
 </table>
 
+<%= link_to 'Nouvelle société', new_company_path %>
 <%= render :partial => 'users/help_box' %>

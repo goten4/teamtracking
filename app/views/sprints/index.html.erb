@@ -14,7 +14,7 @@
     <td><%=h sprint.starts_at.to_s(:european) %></td>
     <td><%=h sprint.ends_at.to_s(:european) %></td>
     <td>
-		[ <%= link_to 'Voir', team_sprint_path(@team, sprint) %> ]
+		  [ <%= link_to 'Voir', team_sprint_path(@team, sprint) %> ]
     	[ <%= link_to 'Modifier', edit_team_sprint_path(@team, sprint) %> ]
     	[ <%= link_to 'Supprimer', team_sprint_path(@team, sprint), :confirm => 'Êtes vous sûr ?', :method => :delete %> ]
 	</td>

@@ -17,10 +17,10 @@ Modifier le profil d'un utilisateur
 <%= label_tag 'email', 'Email:'  %>
 <%= f.text_field :email, :size => 60 %>
 <% if current_user.has_role?('administrator') -%>
-<%= label_tag 'company', 'Société:' %>
-<%= f.collection_select(:company_id, Company.find(:all), :id, :name, {:prompt => true}) %>
+<%= label_tag 'job', 'Société / Statut:' %>
+<%= f.collection_select(:job_id, Job.find(:all), :id, :company_name_and_title, {:prompt => true}) %>
 <% else -%>
-<%= label_tag 'company', 'Société:'  %> <%=h @user.company_name %>
+<%= label_tag 'company', 'Société / Statut:'  %> <%=h @user.job.company_name_and_title %>
 <% end -%>
 <%= label_tag 'teams', 'Equipes:'  %>
 <ul>

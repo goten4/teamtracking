@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  occupation_id: 1
+  company_id: 1
+  rate: 9.99
+
+two:
+  occupation_id: 1
+  company_id: 1
+  rate: 9.99

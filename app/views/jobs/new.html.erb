@@ -1,0 +1,9 @@
+<% content_for(:title) do %>Nouveau poste<% end -%>
+
+<% form_for(:company, @job, :url => { :action => "create" }) do |f| %>
+	<%= render :partial => 'job', :object => f %>
+<% end %>
+
+<%= link_to 'Retour', company_jobs_path(@company) %>
+
+<%= render :partial => 'users/help_box' %>

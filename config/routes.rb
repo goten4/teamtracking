@@ -1,6 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :occupations
 
-  map.resources :companies
+
+  map.resources :companies do |company|
+    company.resources :jobs
+  end
+
   map.resources :teams do |team|
     team.resources :sprints
   end

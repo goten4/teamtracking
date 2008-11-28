@@ -55,8 +55,8 @@ protected
 
   def find_period_by_month
     unless @team.blank? || @period_type != :month
-      @date_month = params[:date][:month] || Date.today.month
-      @date_year = params[:date][:year] || Date.today.year
+      @date_month = params[:date].blank? ? Date.today.month : params[:date][:month]
+      @date_year = params[:date].blank? ? Date.today.year : params[:date][:year]
       @start_date = "#{@date_year}-#{@date_month}-01".to_date
       @end_date = @start_date.at_end_of_month
     end    

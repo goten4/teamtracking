@@ -1,0 +1,25 @@
+<% content_for(:title) do %>Liste des postes et tarifs de la société <%=h @company.name %><% end -%>
+
+<table>
+  <tr>
+    <th>Titre</th>
+    <th>Tarif</th>
+    <th>Actions</th>
+  </tr>
+
+<% for job in @jobs %>
+  <tr>
+    <td><%=h job.occupation.title %></td>
+    <td><%=h job.rate %> &euro;</td>
+    <td>
+		  [ <%= link_to 'Voir', company_job_path(@company, job) %> ]
+    	[ <%= link_to 'Modifier', edit_company_job_path(@company, job) %> ]
+    	[ <%= link_to 'Supprimer', company_job_path(@company, job), :confirm => 'Êtes vous sûr ?', :method => :delete %> ]
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Nouveau poste', new_company_job_path(@company) %>
+
+<%= render :partial => 'users/help_box' %>

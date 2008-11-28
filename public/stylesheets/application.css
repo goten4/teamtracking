@@ -445,3 +445,8 @@ input.datepicker {
 	background-repeat: no-repeat;
 	width: 15ex;
 }
+
+input.rate {
+  width: 8ex;
+}
+

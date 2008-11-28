@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :permissions
   has_many :assignments
   has_many :teams, :through => :assignments
-  belongs_to :company
+  belongs_to :job
   has_many :attendances
   
   validates_presence_of     :login
@@ -25,13 +25,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
-  validates_presence_of     :company_id
+  validates_presence_of     :job_id
   
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :company_id
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :job_id
   attr_accessor :old_password
 
 
@@ -48,11 +48,11 @@ class User < ActiveRecord::Base
   end
 
   def self.find_all_by_teams_and_company(teams, company)
-    all :joins => :assignments, :conditions => ["company_id = ? AND team_id IN (?)", company, teams], :group => "users.id"
+    all :joins => [ :assignments, :jobs ], :conditions => ["company_id = ? AND team_id IN (?)", company, teams], :group => "users.id"
   end
   
   def self.find_by_id_and_teams_and_company(id, teams, company)
-    find id, :joins => :assignments, :conditions => ["company_id = ? AND team_id IN (?)", company, teams]
+    find id, :joins => [ :assignments, :jobs ], :conditions => ["company_id = ? AND team_id IN (?)", company, teams]
   end
 
   def login=(value)
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
   end
   
   def company_name
-    @company_name ||= self.company.name
+    @company_name ||= self.job.company.name
   end
 
   def has_role?(name)

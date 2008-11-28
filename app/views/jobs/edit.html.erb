@@ -1,0 +1,10 @@
+<% content_for(:title) do %>Modifier un poste<% end -%>
+
+<% form_for(:company, @job, :url => company_job_path, :html => { :method => :put }) do |f| %>
+	<%= render :partial => 'job', :object => f %>
+<% end %>
+
+<%= link_to 'Voir', company_job_path(@company, @job) %> |
+<%= link_to 'Retour', company_jobs_path(@company) %>
+
+<%= render :partial => 'users/help_box' %>
