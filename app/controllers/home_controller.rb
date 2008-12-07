@@ -10,6 +10,7 @@ class HomeController < ApplicationController
       redirect_to :controller => "effective_attendances", :action => "index"
     else
       logger.warn { "L'utilisateur #{current_user.login} n'est affecté à aucune équipe" }
+      flash[:notice] = "Vous n'êtes associé à aucune équipe. Veuillez contactez l'adminitrateur."
       redirect_to logout_path
     end
   end
