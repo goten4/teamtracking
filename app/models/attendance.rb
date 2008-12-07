@@ -10,4 +10,8 @@ class Attendance < ActiveRecord::Base
     end
     attendances_of_month.in_groups_of(7)
   end
+  
+  def self.report_for(team, options)
+    sum 'am + pm'
+  end
 end

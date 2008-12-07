@@ -46,7 +46,7 @@ protected
   end
   
   def find_period_by_sprint
-    unless @team.blank? || @period_type != :sprint
+    if !@team.blank? && @period_type == :sprint
       @sprint = params[:sprint].blank? ? @team.sprints.last : Sprint.find(params[:sprint][:id])
       @start_date = @sprint.starts_on
       @end_date = @sprint.ends_on
@@ -54,7 +54,7 @@ protected
   end
 
   def find_period_by_month
-    unless @team.blank? || @period_type != :month
+    if !@team.blank? && @period_type == :month
       @date_month = params[:date].blank? ? Date.today.month : params[:date][:month]
       @date_year = params[:date].blank? ? Date.today.year : params[:date][:year]
       @start_date = "#{@date_year}-#{@date_month}-01".to_date
@@ -63,14 +63,14 @@ protected
   end
 
   def find_period_by_range
-    unless @team.blank? || @period_type != :range
+    if !@team.blank? && @period_type == :range
       @start_date = ( params[:start_date].blank? ? Date.today.at_beginning_of_month : params[:start_date].to_utc(:european).to_date )
       @end_date = ( params[:end_date].blank? ? Date.today.at_end_of_month : params[:end_date].to_utc(:european).to_date )
     end    
   end
 
   def validates_dates
-    if @start_date > @end_date
+    if !@team.blank? && @start_date > @end_date
       flash[:error] = "Dates invalides"
       render :action => :index
     end
