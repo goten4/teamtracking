@@ -200,8 +200,10 @@ module AuthenticatedSystem
     # otherwise the request forgery protection fails. It's only really necessary
     # when you cross quarantine (logged-out to logged-in).
     def logout_killing_session!
+      keeping_flash = flash.clone
       logout_keeping_session!
       reset_session
+      flash.replace(keeping_flash)
     end
     
     #
