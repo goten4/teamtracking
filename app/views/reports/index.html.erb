@@ -15,6 +15,10 @@
 <% form_tag :action => "index" do -%>
 <%= hidden_field_tag "team[id]", @team.id %>
 <hr/>
+<h4>Rapport :</h4>
+<p>
+	<%= select_tag( "report_type", options_for_select({ "Consommé réel" => :effective, "Prévisions de présence" => :expected }, @report_type) ) %>
+</p>
 <h4>Période :</h4>
 <% unless @team.sprints.empty? -%>
 <p>
@@ -43,7 +47,30 @@
 	<%= submit_tag "Valider" %>
 </p>
 </div>
+<% end -%>
+
 <hr/>
+<% unless @report.blank? -%>
+<div id="report">
+	<table>
+		<tr>
+			<th>Société</th>
+			<th>Poste</th>
+			<th>Prix du j/h</th>
+			<th>Nombre de j/h</th>
+			<th>Prix</th>
+		</tr>
+		<% @report.each do |row| -%>
+		<tr>
+			<td><%=h row.company_name %></td>
+			<td><%=h row.job_title %></td>
+			<td><%=h row.rate %> &euro;</td>
+			<td><%= row.attendances_days_count %></td>
+			<td><%= row.rate.to_f * row.attendances_days_count.to_f %> &euro;</td>
+		</tr>
+		<% end -%>
+	</table>
+</div>
 <% end -%>
 
 <% content_for(:sidebar) do %>

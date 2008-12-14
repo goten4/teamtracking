@@ -2,6 +2,7 @@ class ReportsController < ApplicationController
   before_filter :authorization_required
   before_filter :find_teams
   before_filter :find_team
+  before_filter :get_report_type
   before_filter :get_period_type
   before_filter :find_period_by_sprint
   before_filter :find_period_by_month
@@ -13,6 +14,13 @@ class ReportsController < ApplicationController
       flash[:notice] = "Pas d'équipe, pas de rapport !"
       render :action => "noteam"
     elsif request.post?
+      options = { :from => @start_date, :to => @end_date }
+      options[:company] = current_user.job.company unless current_user.has_role?('administrator') || current_user.has_role?('reports_reader')
+      if @report_type == :expected
+        @report = ExpectedAttendance.report_for @team, options
+      else
+        @report = EffectiveAttendance.report_for @team, options
+      end
     end
   end
 
@@ -34,6 +42,10 @@ protected
   
   def find_team
     @team = params[:team].blank? ? @team_list.first : Team.find(params[:team][:id])
+  end
+  
+  def get_report_type
+    @report_type = (params[:report_type] || "effective").to_sym
   end
   
   def get_period_type
