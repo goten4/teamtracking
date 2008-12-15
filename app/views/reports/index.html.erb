@@ -58,15 +58,15 @@
 			<th>Poste</th>
 			<th>Prix du j/h</th>
 			<th>Nombre de j/h</th>
-			<th>Prix</th>
+			<th>Montant</th>
 		</tr>
 		<% @report.each do |row| -%>
-		<tr>
+		<tr class="<%= cycle('odd', 'even') %>">
 			<td><%=h row.company_name %></td>
 			<td><%=h row.job_title %></td>
-			<td><%=h row.rate %> &euro;</td>
+			<td><%= number_to_currency(row.rate, :unit => '&euro; ') %></td>
 			<td><%= row.attendances_days_count %></td>
-			<td><%= row.rate.to_f * row.attendances_days_count.to_f %> &euro;</td>
+			<td><%= number_to_currency(row.rate.to_f * row.attendances_days_count.to_f, :unit => '&euro; ') %></td>
 		</tr>
 		<% end -%>
 	</table>
