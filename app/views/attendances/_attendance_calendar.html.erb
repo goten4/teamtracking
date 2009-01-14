@@ -1,9 +1,21 @@
 <table class="calendar">
 	<thead>
 		<tr>
-			<th><%= link_to "&lt;&lt;", { :action => 'index', :date => @date.last_month }, { :title => "Mois précédent" } %></th>
+			<th>
+        <% if @user.blank? -%>
+        <%= link_to "&lt;&lt;", { :action => 'index', :date => @date.last_month }, { :title => "Mois précédent" } %>
+        <% else -%>
+        <%= link_to "&lt;&lt;", { :action => 'index', :date => @date.last_month, "user[id]" => @user.id }, { :title => "Mois précédent" } %>
+        <% end -%>
+      </th>
 			<th colspan="6"><%= @date.to_s(:month) %></th>
-			<th><%= link_to "&gt;&gt;", { :action => 'index', :date => @date.next_month }, { :title => "Mois suivant" } %></th>
+			<th>
+        <% if @user.blank? -%>
+        <%= link_to "&gt;&gt;", { :action => 'index', :date => @date.next_month }, { :title => "Mois suivant" } %>
+        <% else -%>
+        <%= link_to "&gt;&gt;", { :action => 'index', :date => @date.next_month, "user[id]" => @user.id }, { :title => "Mois suivant" } %>
+        <% end -%>
+      </th>
 		</tr>
 		<tr class="week">
 			<th></th>

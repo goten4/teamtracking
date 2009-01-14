@@ -1,3 +1,3 @@
-<% content_for(:title) do %>Prévisions de présence<% end -%>
+<% content_for(:title) do %>Prévisions de présence<% unless @user_list.blank? %> pour <%= @user.name %><% end %><% end %>
 
 <%= render :partial => 'attendances/index' %>

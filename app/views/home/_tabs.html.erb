@@ -7,10 +7,18 @@
 	</li>
 	<% end -%>
 	<li class="<%= selected_if([EffectiveAttendancesController.controller_name]) %>">
-		<%= link_to "Jours consommés", :controller => "effective_attendances", :action => "index" %>
+    <% if @user.blank? -%>
+    <%= link_to "Jours consommés", :controller => "effective_attendances", :action => "index" %>
+    <% else -%>
+    <%= link_to "Jours consommés", :controller => "effective_attendances", :action => "index", "user[id]" => @user.id %>
+    <% end -%>
 	</li>
 	<li class="<%= selected_if([ExpectedAttendancesController.controller_name]) %>">
+    <% if @user.blank? -%>
 		<%= link_to "Prévisions", :controller => "expected_attendances", :action => "index" %>
+    <% else -%>
+		<%= link_to "Prévisions", :controller => "expected_attendances", :action => "index", "user[id]" => @user.id %>
+    <% end -%>
 	</li>
 	<% if current_user.has_reports_permissions? -%>
 	<li class="<%= selected_if([ReportsController.controller_name]) %>">
