@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
   
   def self.find_by_id_and_teams_and_company(id, teams, company)
-    find id, :joins => [ :assignments, :jobs ], :conditions => ["company_id = ? AND team_id IN (?)", company, teams]
+    find id, :joins => [ :assignments, :job ], :conditions => ["company_id = ? AND team_id IN (?)", company, teams]
   end
 
   def login=(value)
