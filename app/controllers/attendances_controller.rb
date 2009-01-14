@@ -38,7 +38,7 @@ protected
       @user = User.find(params[:user][:id]) if params[:user]
       @user ||= current_user
     elsif current_user.has_role?('team_leader')
-      @user = User.find_by_id_and_teams_and_company(params[:user][:id], current_user.teams, current_user.company) if params[:user]
+      @user = User.find_by_id_and_teams_and_company(params[:user][:id], current_user.teams, current_user.job.company) if params[:user]
       @user ||= current_user
     else
       @user = current_user
