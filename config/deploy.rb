@@ -1,6 +1,6 @@
 set :application, "teamtracking"
-set :repository,  "sources.homelinux.net:/var/git/teamtracking.git"
-set :domain, "teamtracking.homelinux.net"
+set :repository,  "github.com:goten4/teamtracking.git"
+set :domain, "teamtracking.dnsalias.com"
 
 set :scm, :git
 set :deploy_via, :remote_cache
@@ -8,7 +8,7 @@ set :git_enable_submodules, 1
 
 ssh_options[:paranoid] = false
 
-set :deploy_to, "/usr2/web/#{application}"
+set :deploy_to, "/var/www/#{application}"
 set :use_sudo, false
 
 role :app, domain
