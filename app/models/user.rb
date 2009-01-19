@@ -47,12 +47,17 @@ class User < ActiveRecord::Base
     u && u.authenticated?(password) ? u : nil
   end
 
-  def self.find_all_by_teams_and_company(teams, company)
-    all :joins => [ :assignments, :job ], :conditions => ["company_id = ? AND team_id IN (?)", company, teams], :group => "users.id"
+  def self.find_all_by_teams_and_company(teams, company, options)
+    options[:joins] = [ :assignments, :job ]
+    options[:conditions] = ["company_id = ? AND team_id IN (?)", company, teams]
+    options[:group] = "users.id"
+    all options
   end
   
-  def self.find_by_id_and_teams_and_company(id, teams, company)
-    find id, :joins => [ :assignments, :job ], :conditions => ["company_id = ? AND team_id IN (?)", company, teams]
+  def self.find_by_id_and_teams_and_company(id, teams, company, options)
+    options[:joins] = [ :assignments, :job ]
+    options[:conditions] = ["company_id = ? AND team_id IN (?)", company, teams]
+    find id, options
   end
 
   def login=(value)

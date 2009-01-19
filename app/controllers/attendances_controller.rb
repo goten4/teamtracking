@@ -27,9 +27,9 @@ protected
   
   def find_user_list
     if current_user.has_role?('administrator')
-      @user_list = User.all
+      @user_list = User.all :order => :name
     elsif current_user.has_role?('team_leader')
-      @user_list = User.find_all_by_teams_and_company current_user.teams, current_user.job.company
+      @user_list = User.find_all_by_teams_and_company current_user.teams, current_user.job.company, :order => :name
     end
   end
   
@@ -38,7 +38,7 @@ protected
       @user = User.find(params[:user][:id]) if params[:user]
       @user ||= current_user
     elsif current_user.has_role?('team_leader')
-      @user = User.find_by_id_and_teams_and_company(params[:user][:id], current_user.teams, current_user.job.company) if params[:user]
+      @user = User.find_by_id_and_teams_and_company(params[:user][:id], current_user.teams, current_user.job.company, :order => :name) if params[:user]
       @user ||= current_user
     else
       @user = current_user

@@ -1,5 +1,5 @@
 set :application, "teamtracking"
-set :repository,  "github.com:goten4/teamtracking.git"
+set :repository,  "git@github.com:goten4/teamtracking.git"
 set :domain, "teamtracking.dnsalias.com"
 
 set :scm, :git
