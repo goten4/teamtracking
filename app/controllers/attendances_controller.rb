@@ -1,6 +1,5 @@
 class AttendancesController < ApplicationController
   before_filter :login_required
-  before_filter :at_least_one_team_required
   before_filter :get_date
   before_filter :find_user_list
   before_filter :find_user_or_current_user
@@ -14,34 +13,35 @@ protected
     render :action => "index"
   end
 
-  def at_least_one_team_required
-    unless current_user.has_at_least_one_team? || current_user.has_role?('administrator')
-      logger.warn { "L'utilisateur #{current_user.login} n'a pas la permission de saisir sa présence" }
-      redirect_back_or_default(root_path)
-    end
-  end
-
   def get_date
     @date = params[:date] ? params[:date].to_date : Date.today
   end
   
   def find_user_list
     if current_user.has_role?('administrator')
-      @user_list = User.all :order => :name
+      @user_list = User.all :joins => :assignments, :conditions => ["team_id IN (?)", Team.all], :order => :name
     elsif current_user.has_role?('team_leader')
       @user_list = User.find_all_by_teams_and_company current_user.teams, current_user.job.company, :order => :name
     end
   end
   
+  def current_user_or_first_of_list
+    current_user.has_at_least_one_team? ? current_user : @user_list.first
+  end
+
   def find_user_or_current_user
     if current_user.has_role?('administrator')
-      @user = User.find(params[:user][:id]) if params[:user]
-      @user ||= current_user
+      @user = User.first(:joins => :assignments, :conditions => ["users.id = ? and team_id IN (?)", params[:user][:id], Team.all]) if params[:user]
+      @user ||= current_user_or_first_of_list
     elsif current_user.has_role?('team_leader')
       @user = User.find_by_id_and_teams_and_company(params[:user][:id], current_user.teams, current_user.job.company, :order => :name) if params[:user]
-      @user ||= current_user
-    else
+      @user ||= current_user_or_first_of_list
+    elsif current_user.has_at_least_one_team?
       @user = current_user
+    end
+    if @user.blank?
+      logger.warn { "Impossible de saisir la présence : Pas d'équipe affectée" }
+      redirect_back_or_default(root_path)
     end
   end
   
