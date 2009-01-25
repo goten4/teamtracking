@@ -1,0 +1,2 @@
+module TeamAttendancesHelper
+end

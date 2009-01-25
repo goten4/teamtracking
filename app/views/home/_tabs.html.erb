@@ -21,6 +21,9 @@
     <% end -%>
 	</li>
 	<% if current_user.has_reports_permissions? -%>
+	<li class="<%= selected_if([TeamAttendancesController.controller_name]) %>">
+		<%= link_to "Vue d'équipe", :controller => "team_attendances", :action => "index" %>
+	</li>
 	<li class="<%= selected_if([ReportsController.controller_name]) %>">
 		<%= link_to "Rapports", :controller => "reports", :action => "index" %>
 	</li>

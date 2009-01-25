@@ -1,0 +1,19 @@
+<% content_for(:title) do %>Vue d'ensemble de l'équipe <%=h @team.name %><% end -%>
+
+<% unless @team_list.blank? -%>
+	<% form_tag({ :action => "index" }, :class => "centered") do -%>
+	<%= hidden_field_tag :date, @date %>
+	<%= label_tag :team_id, "Voir les informations de l'équipe : " %>
+	<%= select :team, :id, @team_list.collect {|t| [ t.name, t.id ] } %>
+	<%= submit_tag "OK" %>
+	<% end -%>
+<% end -%>
+
+<% content_for(:sidebar) do %>
+<div class="box">
+	<h3>Aide</h3>
+	<ul>
+		<li>Consulter ici les informations saisies par vos équipes.</li>
+	</ul>
+</div>
+<% end -%>
