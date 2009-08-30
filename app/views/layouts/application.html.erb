@@ -8,7 +8,7 @@
 	<%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
 	<%= stylesheet_link_tag 'application' %>
 	<!--[if IE]><%= stylesheet_link_tag 'blueprint/ie', :media => 'screen, projection' %><![endif]-->
-	<%= javascript_include_tag :all, :cache => true %>
+	<%= javascript_include_tag 'prototype', 'scriptaculous', 'application', :cache => false %>
 	<%= simple_datepicker_includes %>
 	<%= yield :head %>
 </head>
